@@ -1,0 +1,242 @@
+[
+    {
+        "code": "CHM",
+        "number": 1311,
+        "term": "fall",
+        "year": 2022,
+        "section": "A",
+        "units": 3,
+        "isClosed": false,
+        "name": {
+            "en": "Principles of Chemistry", 
+            "fr": "Principes de chimie"
+        },
+        "startDate": "2022-09-07",
+        "endDate": "2022-12-07",
+        "classes": [
+            {
+                "type": "LEC",
+                "sectionCode": "00",
+                "instructor": "Alain St-Amant",
+                "day": {
+                    "en": "Monday", 
+                    "fr": "Lundi"
+                },
+                "startTime": "5:30PM",
+                "endTime": "6:50PM",
+                "location": {
+                    "address": "100 Louis Pasteur",
+                    "department": "CRX",
+                    "room": "C140"
+                },
+                "seats": {
+                    "capacity": 300,
+                    "taken": 235,
+                    "seatsSEG": 90
+                }
+            },
+            {
+                "type": "LEC",
+                "sectionCode": "00",
+                "instructor": "Alain St-Amant",
+                "day": {
+                    "en": "Wednesday", 
+                    "fr": "Mercredi"
+                },
+                "startTime": "5:30PM",
+                "endTime": "6:50PM",
+                "location": {
+                    "address": "100 Louis Pasteur",
+                    "department": "CRX",
+                    "room": "C140"
+                },
+                "seats": {
+                    "capacity": 300,
+                    "taken": 235,
+                    "seatsSEG": 90
+                }
+            },
+            {
+                "type": "DGD",
+                "sectionCode": "01",
+                "instructor": "Staff",
+                "day": {
+                    "en": "Wednesday", 
+                    "fr": "Mercredi"
+                },
+                "startTime": "4:00PM",
+                "endTime": "5:20PM",
+                "location": {
+                    "address": "65 University",
+                    "department": "MRT",
+                    "room": "218"
+                },
+                "seats": {
+                    "capacity": 100,
+                    "taken": 30,
+                    "seatsSEG": 20
+                }
+            }
+        ]
+    },
+    {
+        "code": "CHM",
+        "number": 1311,
+        "term": "fall",
+        "year": 2022,
+        "section": "A",
+        "units": 3,
+        "isClosed": false,
+        "name": {
+            "en": "Principles of Chemistry", 
+            "fr": "Principes de chimie"
+        },
+        "startDate": "2022-09-07",
+        "endDate": "2022-12-07",
+        "classes": [
+            {
+                "type": "LEC",
+                "sectionCode": "00",
+                "instructor": "Alain St-Amant",
+                "day": {
+                    "en": "Monday", 
+                    "fr": "Lundi"
+                },
+                "startTime": "5:30PM",
+                "endTime": "6:50PM",
+                "location": {
+                    "address": "100 Louis Pasteur",
+                    "department": "CRX",
+                    "room": "C140"
+                },
+                "seats": {
+                    "capacity": 300,
+                    "taken": 235,
+                    "seatsSEG": 90
+                }
+            },
+            {
+                "type": "LEC",
+                "sectionCode": "00",
+                "instructor": "Alain St-Amant",
+                "day": {
+                    "en": "Wednesday", 
+                    "fr": "Mercredi"
+                },
+                "startTime": "5:30PM",
+                "endTime": "6:50PM",
+                "location": {
+                    "address": "100 Louis Pasteur",
+                    "department": "CRX",
+                    "room": "C140"
+                },
+                "seats": {
+                    "capacity": 300,
+                    "taken": 235,
+                    "seatsSEG": 90
+                }
+            },
+            {
+                "type": "DGD",
+                "sectionCode": "01",
+                "instructor": "Staff",
+                "day": {
+                    "en": "Wednesday", 
+                    "fr": "Mercredi"
+                },
+                "startTime": "4:00PM",
+                "endTime": "5:20PM",
+                "location": {
+                    "address": "65 University",
+                    "department": "MRT",
+                    "room": "218"
+                },
+                "seats": {
+                    "capacity": 100,
+                    "taken": 30,
+                    "seatsSEG": 20
+                }
+            }
+        ]
+    },
+    {
+        "code": "CHM",
+        "number": 1311,
+        "term": "fall",
+        "year": 2022,
+        "section": "A",
+        "units": 3,
+        "isClosed": false,
+        "name": {
+            "en": "Principles of Chemistry", 
+            "fr": "Principes de chimie"
+        },
+        "startDate": "2022-09-07",
+        "endDate": "2022-12-07",
+        "classes": [
+            {
+                "type": "LEC",
+                "sectionCode": "00",
+                "instructor": "Alain St-Amant",
+                "day": {
+                    "en": "Monday", 
+                    "fr": "Lundi"
+                },
+                "startTime": "5:30PM",
+                "endTime": "6:50PM",
+                "location": {
+                    "address": "100 Louis Pasteur",
+                    "department": "CRX",
+                    "room": "C140"
+                },
+                "seats": {
+                    "capacity": 300,
+                    "taken": 235,
+                    "seatsSEG": 90
+                }
+            },
+            {
+                "type": "LEC",
+                "sectionCode": "00",
+                "instructor": "Alain St-Amant",
+                "day": {
+                    "en": "Wednesday", 
+                    "fr": "Mercredi"
+                },
+                "startTime": "5:30PM",
+                "endTime": "6:50PM",
+                "location": {
+                    "address": "100 Louis Pasteur",
+                    "department": "CRX",
+                    "room": "C140"
+                },
+                "seats": {
+                    "capacity": 300,
+                    "taken": 235,
+                    "seatsSEG": 90
+                }
+            },
+            {
+                "type": "DGD",
+                "sectionCode": "01",
+                "instructor": "Staff",
+                "day": {
+                    "en": "Wednesday", 
+                    "fr": "Mercredi"
+                },
+                "startTime": "4:00PM",
+                "endTime": "5:20PM",
+                "location": {
+                    "address": "65 University",
+                    "department": "MRT",
+                    "room": "218"
+                },
+                "seats": {
+                    "capacity": 100,
+                    "taken": 30,
+                    "seatsSEG": 20
+                }
+            }
+        ]
+    }
+]

@@ -1,0 +1,26 @@
+.term-selection-container {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin-left: 25%;
+    justify-content: center;
+}
+
+.link-btn {
+    width: 30%;
+    height: 150px;
+}
+
+.link-btn button {
+    width: 100%;
+    height: 100%;
+    color: rgb(242, 242, 242);
+    font-size: 45px;
+    background-color: rgb(143, 0, 26);
+
+    &:hover {
+        color: rgb(242, 242, 242);
+        background-color: rgb(113, 0, 21);
+    }
+}
