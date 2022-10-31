@@ -1,6 +1,6 @@
 import './AddCourseMainPage.scss'
 import courses from '../../../data/course.json'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react';
 
 const AddCourseMainPage = (props: any) => {
@@ -29,7 +29,9 @@ const AddCourseMainPage = (props: any) => {
                     <div className="free-serach my-5">
                         <h4>Class Search</h4>
                         <p>Search classes based on different criterias</p>
-                        <button>Search</button>
+                        <Link to="/search-course">
+                            <button>Search</button>
+                        </Link>
                     </div>
                     <div className="requirements-search my-5">
                         <h4>My Requirements Search</h4>
