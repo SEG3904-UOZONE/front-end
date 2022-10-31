@@ -1,0 +1,19 @@
+.courses-result-main-container {
+    margin-left: 15%;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    background-color: lightgray;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.courses-list-container {
+    width: 100%;
+    border-radius: 0 10px 10px 0;
+
+}
+
+.course-table {
+    margin-top: 50px;
+}
