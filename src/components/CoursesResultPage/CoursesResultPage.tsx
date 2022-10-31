@@ -27,9 +27,6 @@ const CoursesResultPage = (props: any) => {
                 <button>Select</button>
             )
         }
-        return(
-            <></>
-        )
     }
 
     const meetingDates = (course: any, index: number) => {
@@ -38,7 +35,6 @@ const CoursesResultPage = (props: any) => {
                 <>{course.startDate.split('-').join('/')} <br/> {course.endDate.split('-').join('/')}</>
             )
         }
-        return(<></>)
     }
 
     const getCourseUnits = (course: any, index: number) => {
@@ -47,7 +43,6 @@ const CoursesResultPage = (props: any) => {
                 <>{course.units.toFixed(2)}</>
             )
         }
-        return (<></>)
     }
 
     return(
