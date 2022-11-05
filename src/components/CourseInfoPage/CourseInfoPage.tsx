@@ -7,6 +7,9 @@ const CourseInfoPage = (props: any) => {
 
     const location = useLocation();
     const [selectedCourse, setSelectedCourse] = useState(location.state.course);
+    const [selectedCourseOptionsToSend, setSelectedCourseOptionsToSend] = useState({...selectedCourse});
+    const [labSession, setLabSession] = useState({});
+    const [dgdSession, setDgdSession] = useState({});
     const [courseComponentsSet, setCourseComponentsSet] = useState(new Array);
 
     useEffect(() => {
@@ -17,16 +20,49 @@ const CourseInfoPage = (props: any) => {
         setCourseComponentsSet(Array.from(courseComponentsSetLocal))
     }, [])
 
-    const selectButton = (component: string, index: number) => {
-        if (component != 'LEC') {
+    const selectButton = (component: any, index: number) => {
+        if (component.type != 'LEC') {
             return(
-                <input className="form-check-input" type="radio" name={component+"RadioButton"} id={component+"RadioButton"}/>
+                <input className="form-check-input" 
+                       type="radio" 
+                       name={component.type+"RadioButton"} 
+                       id={component.type+"RadioButton"}
+                       onClick={() => selectDGDOrLAB(component)}/>
             )
         } else {
             return(
                 <input className="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled />
             )
         }
+    }
+
+    const selectDGDOrLAB = (component: any): void => {
+        if (component.type == 'DGD') {
+            setDgdSession(component)
+        } else { // equals to LAB
+            setLabSession(component)
+        }
+        
+    }
+
+    const updateCourseWithSelectedOptions = (): void => {
+        let selectedOptions: Array<any> = [];
+        selectedCourse.classes.forEach((session: any) => {
+            if (session.type == 'LEC') {
+                selectedOptions.push(session)
+            }
+        });
+
+        // add the DGD and Lab sessions
+        if (Object.keys(dgdSession).length !== 0) {
+            selectedOptions.push(dgdSession)
+        }
+        if (Object.keys(labSession).length !== 0) {
+            selectedOptions.push(labSession)
+        }
+
+        // Update the selected lab and dgd
+        selectedCourseOptionsToSend.classes = selectedOptions
     }
 
     const showCourseComponentName = (component: string): string => {
@@ -43,6 +79,8 @@ const CourseInfoPage = (props: any) => {
     }
 
     return (    
+        <>
+        <h1>Course Info Page</h1>
         <div className='courseInfoPageContainer my-5'>
             <h1 className='mt-5'>{selectedCourse.code+selectedCourse.number} - {selectedCourse.name.en}</h1>
             <div className="courseGeneralInfo mt-5">
@@ -117,7 +155,7 @@ const CourseInfoPage = (props: any) => {
                                                                 <td>{courseClass.location.address} <br/> ({courseClass.location.department}) {courseClass.location.room}</td>
                                                                 <td>{courseClass.instructor}</td>
                                                                 <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, selectedCourse.isClosed)}</td>
-                                                                <td>{selectButton(component, index)}</td>
+                                                                <td>{selectButton(courseClass, index)}</td>
                                                             </tr>
                                                         )
                                                     }
@@ -135,9 +173,17 @@ const CourseInfoPage = (props: any) => {
                       state={{semester: selectedCourse.term+selectedCourse.year}}>
                     <button className='cancelButton btn btn-danger'>Cancel</button>
                 </Link>
-                <button className='nextButton btn btn-primary'>Next</button>
+                <Link to="/shopping-cart"
+                      state={{
+                        semester: selectedCourse.term+selectedCourse.year,
+                        selectCourseOptions: selectedCourseOptionsToSend
+                      }}>
+                    <button className='nextButton btn btn-primary'
+                            onClick={() => {updateCourseWithSelectedOptions()}}>Add</button>
+                </Link>
+                
             </div>
-        </div>
+        </div></>
     )
 }
 
