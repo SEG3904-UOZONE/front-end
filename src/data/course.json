@@ -76,6 +76,69 @@
                     "taken": 30,
                     "seatsSEG": 20
                 }
+            },
+            {
+                "type": "DGD",
+                "sectionCode": "02",
+                "instructor": "Staff",
+                "day": {
+                    "en": "Wednesday", 
+                    "fr": "Mercredi"
+                },
+                "startTime": "5:30PM",
+                "endTime": "6:50PM",
+                "location": {
+                    "address": "65 University",
+                    "department": "MRT",
+                    "room": "217"
+                },
+                "seats": {
+                    "capacity": 100,
+                    "taken": 30,
+                    "seatsSEG": 20
+                }
+            },
+            {
+                "type": "LAB",
+                "sectionCode": "01",
+                "instructor": "Staff",
+                "day": {
+                    "en": "Friday", 
+                    "fr": "Vendredi"
+                },
+                "startTime": "4:00PM",
+                "endTime": "5:20PM",
+                "location": {
+                    "address": "65 University",
+                    "department": "MRT",
+                    "room": "318"
+                },
+                "seats": {
+                    "capacity": 100,
+                    "taken": 30,
+                    "seatsSEG": 20
+                }
+            },
+            {
+                "type": "LAB",
+                "sectionCode": "02",
+                "instructor": "Staff",
+                "day": {
+                    "en": "Thursday", 
+                    "fr": "Jeudi"
+                },
+                "startTime": "10:00AM",
+                "endTime": "11:20AM",
+                "location": {
+                    "address": "65 University",
+                    "department": "MRT",
+                    "room": "318"
+                },
+                "seats": {
+                    "capacity": 100,
+                    "taken": 30,
+                    "seatsSEG": 20
+                }
             }
         ]
     },
