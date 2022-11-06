@@ -9,7 +9,7 @@
 .shopping-cart-container {
     width: 75%;
     border-radius: 0 10px 10px 0;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
@@ -22,7 +22,7 @@
 .add-course-search div{
     padding: 1rem;
     width: 100%;
-    background-color: white !important;
+    background-color: rgba(255, 255, 255, 0.5) !important;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
