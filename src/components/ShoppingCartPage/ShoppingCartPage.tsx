@@ -1,8 +1,8 @@
-import './AddCourseMainPage.scss'
-import coursesData from '../../../data/course.json'
+import './ShoppingCartPage.scss'
+import coursesData from '../../data/course.json'
 import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react';
-import { GetCourseClassStatus, GetMeetingDates, GetCourseUnits } from '../../utils/Utils'
+import { GetCourseClassStatus, GetMeetingDates, GetCourseUnits } from '../utils/Utils'
 
 const AddCourseMainPage = (props: any) => {
 
