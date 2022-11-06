@@ -18,9 +18,10 @@ const SearchCourse = () => {
 
     return(
         <div className='search-course-main'>
-            <h1>Search Course</h1>
+            <h1 className='mt-5'>Search Course</h1>
             <div id="form-container">
                 <form className='mt-5 form-section'>
+                    <h2 className='my-5'>Insert course information</h2>
                     <div className="form-group inline-filter">
                         <label htmlFor="subjectInput">Course Subject</label>
                         <input type="text" className="form-control" id="subjectInpu" placeholder="AAA" />
