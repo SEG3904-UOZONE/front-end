@@ -31,9 +31,8 @@ const ConformCoursesPage = () => {
                       state={{semester: location.state.semester}}>
                     <button className='cancelButton btn btn-danger'>Cancel</button>
                 </Link>
-                <Link to="/shopping-cart"
+                <Link to="/enrollment-results"
                       state={{
-                        semester: location.state.semester,
                         courses: location.state.courses
                       }}>
                     <button className='nextButton btn btn-primary'>Confirm</button>
