@@ -5,12 +5,14 @@ import ConfirmCoursesPage from './components/ConfirmCoursesPage/ConfirmCoursesPa
 import CourseInfoPage from './components/CourseInfoPage/CourseInfoPage';
 import CoursesResultPage from './components/CoursesResultPage/CoursesResultPage';
 import EnrollmentResultsPage from './components/EnrollmentResultsPage/EnrollmentResultsPage';
+import Header from './components/Header/Header';
 import HomePage from './components/HomePage/HomePage';
 import SearchCourse from './components/SearchCourse/SearchCourse';
 
 function App() {
   return (
     <div className="App">
+      <Header />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
