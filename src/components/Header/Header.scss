@@ -1,7 +1,24 @@
-.wrapper {
+.header {
     height: 45px;
     background-color: rgb(143, 0, 26);
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 15px;
 
+}
+
+.header button {
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+        background-color: rgb(106, 2, 21);
+    }
+
+    & i {
+        font-size: 25px;
+        color: #e8e8e8;
+    }
 }
 
 nav {
