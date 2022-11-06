@@ -18,7 +18,12 @@ const HomePage = () => {
 
     return(
         <div>
-            <h1>Enrollment Page</h1>
+            <div id='addCoursesTitle'>
+                <span>Add Courses</span>
+            </div>
+            <div>
+                <h2>Select an acadamic term to proceed</h2>
+            </div>
             <div className='term-selection-container'>
                 <div className="link-btn mx-5">
                     <Link 
