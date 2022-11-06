@@ -80,7 +80,7 @@ const CourseInfoPage = (props: any) => {
 
     return (    
         <>
-        <h1>Course Info Page</h1>
+        <h1 className='mt-5'>Course Info Page</h1>
         <div className='courseInfoPageContainer my-5'>
             <h1 className='mt-5'>{selectedCourse.code+selectedCourse.number} - {selectedCourse.name.en}</h1>
             <div className="courseGeneralInfo mt-5">
