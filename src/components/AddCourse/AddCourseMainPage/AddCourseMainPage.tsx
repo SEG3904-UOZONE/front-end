@@ -128,6 +128,18 @@ const AddCourseMainPage = (props: any) => {
                             }
                         </tbody>
                     </table>
+                    <div hidden={courses.length == 0}>
+                        <Link to="/confirm-courses"
+                              state={{ 
+                                semester: semesterCode,
+                                courses: courses
+                            }}>
+                            <button className="btn btn-info m-3">Add Courses To My Schedule</button>
+                        </Link>
+                    </div>
+                    <div hidden={courses.length != 0}>
+                        <h4>Shopping Cart is empty</h4>
+                    </div>
                 </div>
             </div>
         </>
