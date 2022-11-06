@@ -1,6 +1,7 @@
 
 import './Header.scss'
 import logo from '../../assets/Ottawa_resize.png'
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return(
@@ -18,7 +19,7 @@ const Header = () => {
             </div>
             <nav className="d-flex flex-row">
                 <a href="">My Class Schedule</a>
-                <a href="" id='add-link'>Add</a>
+                <Link to="/" id='add-link'>Add</Link>                
                 <a href="">Drop</a>
                 <a href="">Swap</a>
                 <a href="">Term Information</a>

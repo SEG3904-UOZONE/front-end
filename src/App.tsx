@@ -12,8 +12,8 @@ import SearchCourse from './components/SearchCourse/SearchCourse';
 function App() {
   return (
     <div className="App">
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="shopping-cart" element={<AddCourseMainPage />} />
