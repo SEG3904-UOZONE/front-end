@@ -2,6 +2,7 @@ import './AddCourseMainPage.scss'
 import coursesData from '../../../data/course.json'
 import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react';
+import { GetCourseClassStatus, GetMeetingDates, GetCourseUnits } from '../../utils/Utils'
 
 const AddCourseMainPage = (props: any) => {
 
@@ -12,6 +13,14 @@ const AddCourseMainPage = (props: any) => {
     // Add the new course if it exists
     if (location.state.selectCourseOptions != null) {
         courses.push(location.state.selectCourseOptions)
+    }
+
+    const removeCourseFromList = (index: number) => {
+        if (index == 0) {
+            return(
+                <button className='btn btn-danger'><i className="bi bi-trash"></i></button>
+            )
+        }
     }
 
     
@@ -31,6 +40,17 @@ const AddCourseMainPage = (props: any) => {
             <h1>Shopping Cart Page</h1>
             <div className='add-course-main-container my-5'>
                 <div className="add-course-search p-5">
+                    <div hidden={courses.length == 0}>
+                        <h4>Add Courses to Schedule</h4>
+                        <p>Add the courses in the shopping cart to your schedule</p>
+                        <Link to="/confirm-courses"
+                              state={{ 
+                                semester: semesterCode,
+                                courses: courses
+                            }}>
+                            <button className="btn btn-info m-3">Add Courses</button>
+                        </Link>
+                    </div>
                     <div className="free-serach my-5">
                         <h4>Class Search</h4>
                         <p>Search classes based on different criterias</p>
@@ -45,98 +65,44 @@ const AddCourseMainPage = (props: any) => {
                     </div>
                 </div>
                 <div className="shopping-cart-container px-5">
-                    <h3>Shopping Cart for the {semesterCode.split('-').join(' ')} term</h3>
-                    <table className="table">
-                        <thead className="table-dark">
-                            <tr>
-                            <th scope="col">Course</th>
-                            <th scope="col">Component</th>
-                            <th scope="col">Day</th>
-                            <th scope="col">Time</th>
-                            <th scope="col">Instructor</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Units</th>
-                            <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                courses.map((course) => {
-                                    return (
-                                        <tr className={course.code+course.number+course.term+course.year}>
-                                            <td>{course.code+course.number}</td>
-                                            <td>
-                                                {
-                                                    course.classes.map((courseClass) => {
-                                                        return (
-                                                            <tr>
-                                                                <div>{courseClass.type}</div>
-                                                            </tr>
-                                                        )
-                                                    })
-                                                }
-                                            </td>
-                                            <td>
-                                                {
-                                                    course.classes.map((courseClass) => {
-                                                        return (
-                                                            <tr>
-                                                                <div>{courseClass.day.en}</div>
-                                                            </tr>
-                                                        )
-                                                    })
-                                                }
-                                            </td>
-                                            <td>
-                                                {
-                                                    course.classes.map((courseClass) => {
-                                                        return (
-                                                            <tr>
-                                                                <div>{courseClass.startTime}-{courseClass.endTime}</div>
-                                                            </tr>
-                                                        )
-                                                    })
-                                                }
-                                            </td>
-                                            <td>
-                                                {
-                                                    course.classes.map((courseClass) => {
-                                                        return (
-                                                            <tr>
-                                                                <div>{courseClass.instructor}</div>
-                                                            </tr>
-                                                        )
-                                                    })
-                                                }
-                                            </td>
-                                            <td>
-                                                {
-                                                    course.classes.map((courseClass) => {
-                                                        return (
-                                                            <tr>
-                                                                <div>{getCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</div>
-                                                            </tr>
-                                                        )
-                                                    })
-                                                }
-                                            </td>
-                                            <td>{course.units.toFixed(2)}</td>
-                                            <td><button className='btn btn-danger'>Delete</button></td>
-                                        </tr>
-                                    )
-                                })
-                            }
-                        </tbody>
-                    </table>
-                    <div hidden={courses.length == 0}>
-                        <Link to="/confirm-courses"
-                              state={{ 
-                                semester: semesterCode,
-                                courses: courses
-                            }}>
-                            <button className="btn btn-info m-3">Add Courses To My Schedule</button>
-                        </Link>
-                    </div>
+                    <h2>Shopping Cart for the {semesterCode.split('-').join(' ').toUpperCase()} term</h2>
+                    {
+                        courses.map((course, key) => {
+                            return (    
+                                <div className='course-table' key={key}>
+                                    <table className="table table-striped">
+                                        <thead className="table-dark">
+                                            <tr>
+                                            <th scope="col">Course</th>
+                                            <th scope="col">Day & Time</th>
+                                            <th scope="col">Room</th>
+                                            <th scope="col">Instructor</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Units</th>
+                                            <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {
+                                                course.classes.map((courseClass, index) => {
+                                                    return (
+                                                        <tr key={key+'-'+index}>
+                                                            <td> {course.code}{course.number}</td>
+                                                            <td><b>{courseClass.day.en.substring(0,2)} :</b> {courseClass.startTime}-{courseClass.endTime}</td>
+                                                            <td>{courseClass.location.address} <br/> ({courseClass.location.department}) {courseClass.location.room}</td>
+                                                            <td>{courseClass.instructor}</td>
+                                                            <td>{getCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</td>
+                                                            <td>{GetCourseUnits(course, index)}</td>
+                                                            <td>{removeCourseFromList(index)}</td>
+                                                        </tr>
+                                                    )
+                                                })
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            )}
+                        )}
                     <div hidden={courses.length != 0}>
                         <h4>Shopping Cart is empty</h4>
                     </div>
