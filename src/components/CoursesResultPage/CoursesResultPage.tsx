@@ -60,10 +60,10 @@ const CoursesResultPage = (props: any) => {
 
     return(
         <>
-            <h1>Courses Result Page</h1>
+            <h1 className='mt-5'>Courses Result Page</h1>
             <div className='courses-result-main-container my-5'>
                 <div className="courses-list-container px-5">
-                    <h3>Available Courses for the {semesterCode.split('-').join(' ')} term</h3>
+                    <h3 className='mt-3'>Available Courses for the {semesterCode.split('-').join(' ')} term</h3>
                     {
                         courses.map((course, key) => {
                             return (    
