@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './CourseInfoPage.scss'
-import { GetCourseClassStatus, GetMeetingDates, GetCourseUnits } from '../utils/Utils'
+import { GetCourseClassStatus } from '../utils/Utils'
 
 const CourseInfoPage = (props: any) => {
 
