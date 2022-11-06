@@ -25,8 +25,9 @@ const EnrollmentResultsPage = () => {
     }
     
     return(
-        <div className='enrollmentResultsPageContainer my-5'>
-            <h1>Enrollment Results</h1>
+        <>
+            <h1 className='mt-3'>Enrollment Results</h1>
+            <div className='enrollmentResultsPageContainer my-5'>
             <div className="alert alert-info my-5" role="alert">
                 <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>
                 <p>View the following status report for enrollment confirmations and errors.</p>
@@ -68,6 +69,7 @@ const EnrollmentResultsPage = () => {
                 </Link>
             </div>
         </div>
+        </>
     )
 }
 
