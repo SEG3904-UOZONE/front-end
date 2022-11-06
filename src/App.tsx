@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import AddCourseMainPage from './components/AddCourse/AddCourseMainPage/AddCourseMainPage';
+import ConfirmCoursesPage from './components/ConfirmCoursesPage/ConfirmCoursesPage';
 import CourseInfoPage from './components/CourseInfoPage/CourseInfoPage';
 import CoursesResultPage from './components/CoursesResultPage/CoursesResultPage';
 import HomePage from './components/HomePage/HomePage';
@@ -16,6 +17,7 @@ function App() {
           <Route path="search-course" element={<SearchCourse />} />
           <Route path="courses-result" element={<CoursesResultPage />} />
           <Route path="course-info" element={<CourseInfoPage />} />
+          <Route path="confirm-courses" element={<ConfirmCoursesPage />} />
         </Routes>
       </BrowserRouter>
     </div>
