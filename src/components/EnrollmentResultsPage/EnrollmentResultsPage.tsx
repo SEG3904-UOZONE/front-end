@@ -34,7 +34,7 @@ const EnrollmentResultsPage = () => {
             </div>
             <div className="resultsTable">
                 <table className="table table-striped">
-                    <thead className="table-dark">
+                    <thead>
                         <tr>
                             <th style={{width: "20%"}} scope="col">Course</th>
                             <th scope="col">Message</th>

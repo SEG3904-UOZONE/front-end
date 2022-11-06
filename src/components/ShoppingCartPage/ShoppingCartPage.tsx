@@ -71,7 +71,7 @@ const AddCourseMainPage = (props: any) => {
                             return (    
                                 <div className='course-table' key={key}>
                                     <table className="table table-striped">
-                                        <thead className="table-dark">
+                                        <thead>
                                             <tr>
                                             <th scope="col">Course</th>
                                             <th scope="col">Day & Time</th>

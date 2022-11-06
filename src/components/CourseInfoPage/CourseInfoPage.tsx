@@ -130,7 +130,7 @@ const CourseInfoPage = (props: any) => {
                                 <div className='courseComponents' key={key}>
                                     <h4>{showCourseComponentName(component)}</h4>
                                     <table className="table table-striped mb-5">
-                                        <thead className="table-dark">
+                                        <thead>
                                             <tr>
                                             <th scope="col">Component</th>
                                             <th scope="col">Section</th>

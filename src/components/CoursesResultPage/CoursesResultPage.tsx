@@ -70,7 +70,7 @@ const CoursesResultPage = (props: any) => {
                                 <div className='course-table' key={key}>
                                     <h4>{course.code+course.number} [{course.section}] - {course.name.en}</h4>
                                     <table className="table table-striped">
-                                        <thead className="table-dark">
+                                        <thead>
                                             <tr>
                                             <th scope="col">Component</th>
                                             <th scope="col">Day</th>
