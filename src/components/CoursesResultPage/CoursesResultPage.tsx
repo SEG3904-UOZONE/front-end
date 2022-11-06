@@ -1,12 +1,13 @@
 import './CoursesResultPage.scss'
 import courses from '../../data/course.json'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 
 const CoursesResultPage = (props: any) => {
 
     const location = useLocation();
-    const [semesterCode, setSemesterCode] = useState<string>('');    
+    const [semesterCode, setSemesterCode] = useState<string>('');
+    const navigate = useNavigate();
     
 
     
@@ -21,10 +22,22 @@ const CoursesResultPage = (props: any) => {
         return "Open"
     }
 
-    const selectButton = (index: number) => {
+    const selectButton = (course: any, index: number) => {
         if (index == 0) {
             return(
-                <button>Select</button>
+                <Link 
+                        to="/course-info"
+                        state={{course: course}}
+                        onClick={() => {
+                            navigate("/course-info", {
+                                state: {
+                                    course: course
+                                }
+                            });
+                        }}
+                        >
+                        <button className='btn btn-primary'>Select</button>
+                    </Link>
             )
         }
     }
@@ -83,7 +96,7 @@ const CoursesResultPage = (props: any) => {
                                                             <td>{meetingDates(course, index)}</td>
                                                             <td>{getCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</td>
                                                             <td>{getCourseUnits(course, index)}</td>
-                                                            <td>{selectButton(index)}</td>
+                                                            <td>{selectButton(course, index)}</td>
                                                         </tr>
                                                     )
                                                 })

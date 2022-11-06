@@ -1,13 +1,18 @@
 import './AddCourseMainPage.scss'
-import courses from '../../../data/course.json'
+import coursesData from '../../../data/course.json'
 import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react';
 
 const AddCourseMainPage = (props: any) => {
 
     const location = useLocation();
-    const [semesterCode, setSemesterCode] = useState<string>(location.state.semester);    
+    const courses = new Array(...coursesData);
+    const [semesterCode, setSemesterCode] = useState<string>(location.state.semester);
     
+    // Add the new course if it exists
+    if (location.state.selectCourseOptions != null) {
+        courses.push(location.state.selectCourseOptions)
+    }
 
     
 
@@ -30,13 +35,13 @@ const AddCourseMainPage = (props: any) => {
                         <h4>Class Search</h4>
                         <p>Search classes based on different criterias</p>
                         <Link to="/search-course">
-                            <button>Search</button>
+                            <button className='btn btn-warning'>Search</button>
                         </Link>
                     </div>
                     <div className="requirements-search my-5">
                         <h4>My Requirements Search</h4>
                         <p>Search classes based on your program requirements</p>
-                        <button>Search</button>
+                        <button className='btn btn-warning'>Search</button>
                     </div>
                 </div>
                 <div className="shopping-cart-container px-5">
@@ -116,7 +121,7 @@ const AddCourseMainPage = (props: any) => {
                                                 }
                                             </td>
                                             <td>{course.units.toFixed(2)}</td>
-                                            <td><button>Delete</button></td>
+                                            <td><button className='btn btn-danger'>Delete</button></td>
                                         </tr>
                                     )
                                 })
