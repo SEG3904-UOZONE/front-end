@@ -37,9 +37,9 @@ const AddCourseMainPage = (props: any) => {
 
     return(
         <>
-            <h1>Shopping Cart Page</h1>
+            <h1 className='mt-5'>Shopping Cart Page</h1>
             <div className='add-course-main-container my-5'>
-                <div className="add-course-search p-5">
+                <div className="add-course-search">
                     <div hidden={courses.length == 0}>
                         <h4>Add Courses to Schedule</h4>
                         <p>Add the courses in the shopping cart to your schedule</p>
@@ -51,21 +51,21 @@ const AddCourseMainPage = (props: any) => {
                             <button className="btn btn-info m-3">Add Courses</button>
                         </Link>
                     </div>
-                    <div className="free-serach my-5">
+                    <div className="free-serach my-3">
                         <h4>Class Search</h4>
                         <p>Search classes based on different criterias</p>
                         <Link to="/search-course">
                             <button className='btn btn-warning'>Search</button>
                         </Link>
                     </div>
-                    <div className="requirements-search my-5">
+                    <div className="requirements-search my-3">
                         <h4>My Requirements Search</h4>
                         <p>Search classes based on your program requirements</p>
                         <button className='btn btn-warning'>Search</button>
                     </div>
                 </div>
                 <div className="shopping-cart-container px-5">
-                    <h2>Shopping Cart for the {semesterCode.split('-').join(' ').toUpperCase()} term</h2>
+                    <h2 className='mt-3'>Shopping Cart for the {semesterCode.split('-').join(' ').toUpperCase()} term</h2>
                     {
                         courses.map((course, key) => {
                             return (    
