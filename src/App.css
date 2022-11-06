@@ -43,3 +43,8 @@
     transform: rotate(360deg);
   }
 }
+
+thead {
+  background-color: #80746c !important;
+  color: white;
+}

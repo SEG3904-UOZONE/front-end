@@ -18,8 +18,9 @@ const ConformCoursesPage = () => {
     
 
     return(
+        <>
+        <h1 className='mt-3'>Confirm Courses</h1>
         <div className='confirmationPageContainer my-5'>
-            <h1>Confirm Courses</h1>
             <div className="alert alert-info mt-5" role="alert">
                 <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>
                 <p>Select <b>Confirm</b> to process your request for the courses listed below and add it to your schedule.
@@ -45,7 +46,7 @@ const ConformCoursesPage = () => {
                         <div className='course-table courseTable' key={key}>
                             <h4>{course.code+course.number} [{course.section}] - {course.name.en}</h4>
                             <table className="table table-striped">
-                                <thead className="table-dark">
+                                <thead>
                                     <tr>
                                     <th scope="col">Component</th>
                                     <th scope="col">Day</th>
@@ -83,6 +84,7 @@ const ConformCoursesPage = () => {
                 )}
             </div>
         </div>
+        </>
     )
 }
 

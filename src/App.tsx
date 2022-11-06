@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import AddCourseMainPage from './components/AddCourse/AddCourseMainPage/AddCourseMainPage';
+import ShoppingCartPage from './components/ShoppingCartPage/ShoppingCartPage';
 import ConfirmCoursesPage from './components/ConfirmCoursesPage/ConfirmCoursesPage';
 import CourseInfoPage from './components/CourseInfoPage/CourseInfoPage';
 import CoursesResultPage from './components/CoursesResultPage/CoursesResultPage';
@@ -12,11 +12,11 @@ import SearchCourse from './components/SearchCourse/SearchCourse';
 function App() {
   return (
     <div className="App">
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="shopping-cart" element={<AddCourseMainPage />} />
+          <Route path="shopping-cart" element={<ShoppingCartPage />} />
           <Route path="search-course" element={<SearchCourse />} />
           <Route path="courses-result" element={<CoursesResultPage />} />
           <Route path="course-info" element={<CourseInfoPage />} />
