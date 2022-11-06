@@ -1,0 +1,38 @@
+.confirmationPageContainer {
+    margin-left: 15%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: lightgray;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.courseTable {
+    margin-left: 15%;
+    width: 70%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.alert-info {
+    margin-left: 15%;
+    width: 70%;
+    display: flex;
+    column-gap: 50px;
+    align-items: center;
+    text-align: justify;
+}
+
+.cancelOrConfirmContainer {
+    display: flex;
+    justify-content: center;
+    column-gap: 200px;
+}
+
+.cancelOrConfirmContainer button {
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+}
