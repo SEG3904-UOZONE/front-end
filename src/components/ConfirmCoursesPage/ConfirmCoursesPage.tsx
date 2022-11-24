@@ -44,7 +44,7 @@ const ConformCoursesPage = () => {
                 shoppingCartCourses.map((course: any, key: number) => {
                     return (    
                         <div className='course-table courseTable' key={key}>
-                            <h4>{course.code+course.number} [{course.section}] - {course.name.en}</h4>
+                            <h4>{course.code+course.number} [{course.section}] - {course.name_en}</h4>
                             <table className="table table-striped">
                                 <thead>
                                     <tr>

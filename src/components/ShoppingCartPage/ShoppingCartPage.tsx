@@ -1,20 +1,25 @@
 import './ShoppingCartPage.scss'
-import coursesData from '../../data/course.json'
 import { Link, useLocation } from 'react-router-dom'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GetCourseClassStatus, GetMeetingDates, GetCourseUnits } from '../utils/Utils'
+import axios from 'axios';
 
 const AddCourseMainPage = (props: any) => {
 
     const location = useLocation();
-    const courses = new Array(...coursesData);
     const [semesterCode, setSemesterCode] = useState<string>(location.state.semester);
-    
-    // Add the new course if it exists
-    if (location.state.selectCourseOptions != null) {
-        courses.push(location.state.selectCourseOptions)
-    }
 
+     // Grouping the API data insude of an array of objects.
+     let [cart, setCart] = useState<any[]>([]);
+ 
+     // React hook to fetch the data
+     useEffect(() => {
+         axios.get('/cart')
+             .then(res => setCart(res.data))
+             .catch(err => console.error(err));
+     }, []);
+
+     // Helper function to remove a course from the list of courses
     const removeCourseFromList = (index: number) => {
         if (index == 0) {
             return(
@@ -40,13 +45,13 @@ const AddCourseMainPage = (props: any) => {
             <h1 className='mt-5'>Shopping Cart Page</h1>
             <div className='add-course-main-container my-5'>
                 <div className="add-course-search">
-                    <div hidden={courses.length == 0}>
+                    <div hidden={cart.length == 0}>
                         <h4>Add Courses to Schedule</h4>
                         <p>Add the courses in the shopping cart to your schedule</p>
                         <Link to="/confirm-courses"
                               state={{ 
                                 semester: semesterCode,
-                                courses: courses
+                                courses: cart
                             }}>
                             <button className="btn btn-info m-3">Add Courses</button>
                         </Link>
@@ -67,7 +72,7 @@ const AddCourseMainPage = (props: any) => {
                 <div className="shopping-cart-container px-5">
                     <h2 className='mt-3'>Shopping Cart for the {semesterCode.split('-').join(' ').toUpperCase()} term</h2>
                     {
-                        courses.map((course, key) => {
+                        cart.map((course, key) => {
                             return (    
                                 <div className='course-table' key={key}>
                                     <table className="table table-striped">
@@ -84,7 +89,7 @@ const AddCourseMainPage = (props: any) => {
                                         </thead>
                                         <tbody>
                                         {
-                                                course.classes.map((courseClass, index) => {
+                                                course.classes.map((courseClass:any, index: number) => {
                                                     return (
                                                         <tr key={key+'-'+index}>
                                                             <td> {course.code}{course.number}</td>
@@ -103,7 +108,7 @@ const AddCourseMainPage = (props: any) => {
                                 </div>
                             )}
                         )}
-                    <div hidden={courses.length != 0}>
+                    <div hidden={cart.length != 0}>
                         <h4>Shopping Cart is empty</h4>
                     </div>
                 </div>
