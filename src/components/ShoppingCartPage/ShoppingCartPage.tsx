@@ -20,10 +20,18 @@ const AddCourseMainPage = (props: any) => {
      }, []);
 
      // Helper function to remove a course from the list of courses
-    const removeCourseFromList = (index: number) => {
+    const removeCourseFromList = (index: number, courseId: any, name: String) => {
         if (index == 0) {
             return(
-                <button className='btn btn-danger'><i className="bi bi-trash"></i></button>
+                <button className='btn btn-danger'
+                    onClick={async () => {
+                        if (window.confirm("Are you sure to delete the course " + name + " ?") == true) {
+                            await axios.delete('/cart/'+courseId).then(res => console.log(res));
+                            window.location.reload();
+                        }
+                    }}
+                    ><i className="bi bi-trash"></i>
+                </button>
             )
         }
     }
@@ -98,7 +106,7 @@ const AddCourseMainPage = (props: any) => {
                                                             <td>{courseClass.instructor}</td>
                                                             <td>{getCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</td>
                                                             <td>{GetCourseUnits(course, index)}</td>
-                                                            <td>{removeCourseFromList(index)}</td>
+                                                            <td>{removeCourseFromList(index, course.cart_item_id, course.code+course.number)}</td>
                                                         </tr>
                                                     )
                                                 })
