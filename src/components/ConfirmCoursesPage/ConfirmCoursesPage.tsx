@@ -8,10 +8,16 @@ const ConformCoursesPage = () => {
     const location = useLocation();
     const [shoppingCartCourses, setShoppingCartCourses] = useState([...location.state.courses])
 
-    const removeCourseFromList = (index: number) => {
+    const removeCourseFromList = (index: number, key: number) => {
         if (index == 0) {
             return(
-                <button className='btn btn-danger'><i className="bi bi-trash"></i></button>
+                <button className='btn btn-danger'
+                    onClick={() => {
+                        shoppingCartCourses.splice(key, 1)
+                        setShoppingCartCourses([...shoppingCartCourses])                       
+                    }}
+                    ><i className="bi bi-trash"></i>
+                </button>
             )
         }
     }
@@ -34,7 +40,7 @@ const ConformCoursesPage = () => {
                 </Link>
                 <Link to="/enrollment-results"
                       state={{
-                        courses: location.state.courses
+                        courses: shoppingCartCourses
                       }}>
                     <button className='nextButton btn btn-primary'>Confirm</button>
                 </Link>
@@ -72,7 +78,7 @@ const ConformCoursesPage = () => {
                                                     <td>{GetMeetingDates(course, index)}</td>
                                                     <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</td>
                                                     <td>{GetCourseUnits(course, index)}</td>
-                                                    <td>{removeCourseFromList(index)}</td>
+                                                    <td>{removeCourseFromList(index, key)}</td>
                                                 </tr>
                                             )
                                         })
