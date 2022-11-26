@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './ConfirmCoursesPage.scss'
 import { GetCourseClassStatus, GetMeetingDates, GetCourseUnits } from '../utils/Utils'
+import axios from 'axios';
 
 const ConformCoursesPage = () => {
 
@@ -20,6 +21,13 @@ const ConformCoursesPage = () => {
                 </button>
             )
         }
+    }
+
+    // Helper function for the delete request
+    const handleItemDelete = async (shoppingCartCourses: any) => {
+        shoppingCartCourses.forEach(async (course: { cart_item_id: string; }) => {
+            await axios.delete('/cart/'+course.cart_item_id).then(res => console.log(res));
+        });
     }
     
 
@@ -42,7 +50,10 @@ const ConformCoursesPage = () => {
                       state={{
                         courses: shoppingCartCourses
                       }}>
-                    <button className='nextButton btn btn-primary'>Confirm</button>
+                    <button className='nextButton btn btn-primary'
+                        onClick={() => handleItemDelete(shoppingCartCourses)}
+                        >Confirm
+                    </button>
                 </Link>
             </div>
             <div className='mb-5'>
