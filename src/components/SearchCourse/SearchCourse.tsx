@@ -7,6 +7,9 @@ const SearchCourse = () => {
     let [hideAdvancedSearch, setHideAdvancedSearch] = useState<boolean>(true)
     let [advancedSearchText, setAdvancedSearchText] = useState<string>('Advanced Search')
 
+    let [courseSubject, setCourseSubject] = useState("")
+    let [courseNumber, setCourseNumber] = useState(0)
+
     let toggleAdvancedSearch = (): void => {
         setHideAdvancedSearch(!hideAdvancedSearch)
         if (hideAdvancedSearch) {
@@ -24,11 +27,11 @@ const SearchCourse = () => {
                     <h2 className='my-5'>Insert course information</h2>
                     <div className="form-group inline-filter">
                         <label htmlFor="subjectInput">Course Subject</label>
-                        <input type="text" className="form-control" id="subjectInpu" placeholder="AAA" />
+                        <input type="text" className="form-control" id="subjectInpu" placeholder="AAA" onChange={e => setCourseSubject((e.target.value).toUpperCase())}/>
                     </div>
                     <div className="form-group inline-filter ">
                         <label htmlFor="courseNumberInput">Course Number</label>
-                        <input type="text" className="form-control" id="courseNumberInput" placeholder="1234" />
+                        <input type="text" className="form-control" id="courseNumberInput" placeholder="1234" onChange={e => setCourseNumber(parseInt(e.target.value))}/>
                     </div>
                     <div className="form-group inline-filter" hidden={hideAdvancedSearch}>
                         <label htmlFor="courseCareerInput">Course Career</label>
@@ -96,7 +99,11 @@ const SearchCourse = () => {
                             <option value="ZZVIRTL">Virtual</option>
                         </select>
                     </div>
-                    <Link to="/courses-result">
+                    <Link  to="/courses-result"
+                           state={{
+                                courseSubject: courseSubject,
+                                courseNumber: courseNumber
+                            }}>
                         <button type="submit" id="submit-seach-btn">Search</button>
                     </Link>
                 </form>

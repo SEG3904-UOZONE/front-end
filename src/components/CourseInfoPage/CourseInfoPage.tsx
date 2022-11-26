@@ -82,7 +82,7 @@ const CourseInfoPage = (props: any) => {
         <>
         <h1 className='mt-5'>Course Info Page</h1>
         <div className='courseInfoPageContainer my-5'>
-            <h1 className='mt-5'>{selectedCourse.code+selectedCourse.number} - {selectedCourse.name.en}</h1>
+            <h1 className='mt-5'>{selectedCourse.code+selectedCourse.number} - {selectedCourse.name_en}</h1>
             <div className="courseGeneralInfo mt-5">
                 <div className="courseDetails">
                     <div>
@@ -92,7 +92,7 @@ const CourseInfoPage = (props: any) => {
                                 <h5 style={{display: "inline"}}>Section:</h5> &nbsp; <span>{selectedCourse.section}</span>
                             </div>
                             <div>
-                                <h5 style={{display: "inline"}}>Units:</h5> &nbsp; <span>{selectedCourse.units.toFixed(2)}</span>
+                                <h5 style={{display: "inline"}}>Units:</h5> &nbsp; <span>{parseInt(selectedCourse.units).toFixed(2)}</span>
                             </div>
                             <div>
                                 <h5 style={{display: "inline"}}>Grading:</h5> &nbsp; <span>D (50%) Passing Grade</span>
