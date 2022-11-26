@@ -24,7 +24,7 @@ const ConformCoursesPage = () => {
     }
 
     // Helper function for the delete request
-    const handleItemDelete = async (shoppingCartCourses: any) => {
+    const handleCourseDelete = async (shoppingCartCourses: any) => {
         shoppingCartCourses.forEach(async (course: { cart_item_id: string; }) => {
             await axios.delete('/cart/'+course.cart_item_id).then(res => console.log(res));
         });
@@ -51,7 +51,7 @@ const ConformCoursesPage = () => {
                         courses: shoppingCartCourses
                       }}>
                     <button className='nextButton btn btn-primary'
-                        onClick={() => handleItemDelete(shoppingCartCourses)}
+                        onClick={() => handleCourseDelete(shoppingCartCourses)}
                         >Confirm
                     </button>
                 </Link>
