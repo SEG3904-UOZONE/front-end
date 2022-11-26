@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './CourseInfoPage.scss'
 import { GetCourseClassStatus } from '../utils/Utils'
+import axios from 'axios';
 
 const CourseInfoPage = (props: any) => {
 
+    // set local variables
     const location = useLocation();
     const [selectedCourse, setSelectedCourse] = useState(location.state.course);
     const [selectedCourseOptionsToSend, setSelectedCourseOptionsToSend] = useState({...selectedCourse});
@@ -12,6 +14,8 @@ const CourseInfoPage = (props: any) => {
     const [dgdSession, setDgdSession] = useState({});
     const [courseComponentsSet, setCourseComponentsSet] = useState(new Array);
 
+
+    // Define all course components available from the selected course, such as LEC, DGD and LAB (if they exist)
     useEffect(() => {
         const courseComponentsSetLocal = new Set()
         for(let index=0; index < (selectedCourse.classes).length; index++) {
@@ -20,6 +24,7 @@ const CourseInfoPage = (props: any) => {
         setCourseComponentsSet(Array.from(courseComponentsSetLocal))
     }, [])
 
+    // Add a different selection button depending on the type of course component
     const selectButton = (component: any, index: number) => {
         if (component.type != 'LEC') {
             return(
@@ -30,19 +35,20 @@ const CourseInfoPage = (props: any) => {
                        onClick={() => selectDGDOrLAB(component)}/>
             )
         } else {
+            // lecture component is selected by default
             return(
                 <input className="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled />
             )
         }
     }
 
+    // Set the lab or dgd session based on the 
     const selectDGDOrLAB = (component: any): void => {
         if (component.type == 'DGD') {
             setDgdSession(component)
         } else { // equals to LAB
             setLabSession(component)
         }
-        
     }
 
     const updateCourseWithSelectedOptions = (): void => {
@@ -76,6 +82,35 @@ const CourseInfoPage = (props: any) => {
             default:
                 return '';
         }
+    }
+
+    // Helper function for the POST request
+    const handlePost = async (): Promise<any> => {
+
+        // add the selected lab and dgd sessions if they exist
+        updateCourseWithSelectedOptions()
+
+        // create a new object to return
+        const newCourseToAdd = {
+            cart_item_id: selectedCourseOptionsToSend.course_id + 100,
+            code: selectedCourseOptionsToSend.code,
+            number: selectedCourseOptionsToSend.number,
+            term: selectedCourseOptionsToSend.term,
+            year: selectedCourseOptionsToSend.year,
+            section: selectedCourseOptionsToSend.section,
+            units: selectedCourseOptionsToSend.units,
+            isClosed: selectedCourseOptionsToSend.isClosed,
+            name_en: selectedCourseOptionsToSend.name_en,
+            name_fr: selectedCourseOptionsToSend.name_fr,
+            startDate: selectedCourseOptionsToSend.startDate,
+            endDate: selectedCourseOptionsToSend.endDate,
+            classes: `${JSON.stringify(selectedCourseOptionsToSend.classes)}`
+        }
+
+        // Add the new course selected to the cart table
+        await axios.post('/cart', newCourseToAdd)
+                    .then(() => console.log("Course added successfully"))
+                    .catch(err => console.log(err));
     }
 
     return (    
@@ -176,12 +211,10 @@ const CourseInfoPage = (props: any) => {
                 <Link to="/shopping-cart"
                       state={{
                         semester: selectedCourse.term+selectedCourse.year,
-                        selectCourseOptions: selectedCourseOptionsToSend
                       }}>
                     <button className='nextButton btn btn-primary'
-                            onClick={() => {updateCourseWithSelectedOptions()}}>Add</button>
-                </Link>
-                
+                            onClick={() => {handlePost()}}>Add</button>
+                </Link>                
             </div>
         </div></>
     )
