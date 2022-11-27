@@ -20,7 +20,9 @@ const AddCourseMainPage = (props: any) => {
              .catch(err => console.error(err));
      }, []);
 
-     let filteredCart = cart.filter(course => {
+    
+    // filter the cart based on the selected term
+    let filteredCart = cart.filter(course => {
         const semester = semesterCode.split('-')
         if ((course.term == semester[0]) && (course.year == semester[1]) ) {
             isEmptyCart = false
