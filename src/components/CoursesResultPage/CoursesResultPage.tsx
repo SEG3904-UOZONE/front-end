@@ -20,7 +20,7 @@ const CoursesResultPage = (props: any) => {
     const location = useLocation();
     const courseSubject = location.state.courseSubject
     const courseNumber = location.state.courseNumber
-    const [semesterCode, setSemesterCode] = useState<string>('');
+    const [semesterCode, setSemesterCode] = useState<string>(location.state.semester);
     const navigate = useNavigate();
     
 
@@ -48,7 +48,7 @@ const CoursesResultPage = (props: any) => {
                             });
                         }}
                         >
-                        <button className='btn btn-primary'>Select</button>
+                        <button className='btn btn-danger dark-red-btn'>Select</button>
                     </Link>
             )
         }
@@ -65,21 +65,45 @@ const CoursesResultPage = (props: any) => {
 
     return(
         <>
-            <h1 className='mt-5'>Courses Result Page</h1>
+            <h1 className='page-title'>Courses Result Page</h1>
             <div className='courses-result-main-container my-5'>
                 <div className="courses-list-container px-5">
-                    <h3 className='mt-3'>Available Courses for the {semesterCode.split('-').join(' ')} term</h3>
+                    <h2 className='my-3'>Available <b>{courseSubject} {courseNumber}</b> Courses for the <b>{semesterCode.split('-').join(' ').toUpperCase()}</b> term</h2>
+                    <div className="alert alert-info mt-5" role="alert" hidden={courses.length!=0}>
+                        <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>
+                        <p>Select one of the courses based on the criterias you entered, you can also modify the search query, or return to the shopping cart</p>
+                    </div>
+                    <div className="alert alert-danger mt-5" role="alert" hidden={courses.length==0}>
+                        <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>
+                        <p>The search returned no results, you can modify the search query, or return to the shopping cart</p>
+                    </div>
+                    <div className='resultsRedirectionButtons my-5'>
+                        <Link to="/shopping-cart"
+                            state={{semester: semesterCode}}>
+                            <button className='back-btn'>Shopping Cart</button>
+                        </Link>
+                        <Link to="/search-course"
+                            state={{
+                                semester: semesterCode,
+                            }}>
+                            <button className='modify-search-btn'>Modify Search</button>
+                        </Link>
+                    </div>
                     {
                         courses
                             .filter(course => {
-                                if ((course.code == courseSubject) && (course.number == courseNumber) ) {
+                                const semester = semesterCode.split('-')
+                                if ((course.code == courseSubject) 
+                                    && (course.number == courseNumber)
+                                    && (course.term == semester[0])
+                                    && (course.year == semester[1]) ) {
                                     return course
                                 }
                             })
                             .map((course: any, key: number) => {
                                 return (    
-                                    <div className='course-table' key={key}>
-                                        <h4>{course.code+course.number} [{course.section}] - {course.name_en}</h4>
+                                    <div className='course-table my-5' key={key}>
+                                        <h4 style={{color: '#8f001a'}}>{course.code+course.number} [{course.section}] - {course.name_en}</h4>
                                         <table className="table table-striped">
                                             <thead>
                                                 <tr>

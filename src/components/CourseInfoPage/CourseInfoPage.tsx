@@ -115,14 +115,14 @@ const CourseInfoPage = (props: any) => {
 
     return (    
         <>
-        <h1 className='mt-5'>Course Info Page</h1>
+        <h1 className='page-title'>Course Info Page</h1>
         <div className='courseInfoPageContainer my-5'>
-            <h1 className='mt-5'>{selectedCourse.code+selectedCourse.number} - {selectedCourse.name_en}</h1>
+            <h1 className='mt-5' style={{color: "rgb(143, 0, 26)"}}>{selectedCourse.code+selectedCourse.number} - {selectedCourse.name_en}</h1>
             <div className="courseGeneralInfo mt-5">
                 <div className="courseDetails">
                     <div>
-                        <h3>Course Details</h3>
-                        <div className='px-4'>
+                        <h3 style={{fontWeight: "600"}}>Course Details</h3>
+                        <div className='px-2'>
                             <div>
                                 <h5 style={{display: "inline"}}>Section:</h5> &nbsp; <span>{selectedCourse.section}</span>
                             </div>
@@ -143,8 +143,8 @@ const CourseInfoPage = (props: any) => {
                     </div>
                 </div>
                 <div className="enrollmentInfo">
-                    <h3>Enrollement info</h3>
-                    <div className='px-4'>
+                    <h3 style={{fontWeight: "600"}}>Enrollement info</h3>
+                    <div className='px-2'>
                         <div>
                             <h5 style={{display: "inline"}}>Prerequisite:</h5> &nbsp; <span>ITI1120</span>
                         </div>
@@ -163,7 +163,7 @@ const CourseInfoPage = (props: any) => {
                         return(
                                 
                                 <div className='courseComponents' key={key}>
-                                    <h4>{showCourseComponentName(component)}</h4>
+                                    <h4 style={{color: "rgb(143, 0, 26)"}}>{showCourseComponentName(component)}</h4>
                                     <table className="table table-striped mb-5">
                                         <thead>
                                             <tr>
@@ -205,14 +205,14 @@ const CourseInfoPage = (props: any) => {
             </div>
             <div className='cancelOrSelectContainer mb-5'>
                 <Link to="/shopping-cart"
-                      state={{semester: selectedCourse.term+selectedCourse.year}}>
-                    <button className='cancelButton btn btn-danger'>Cancel</button>
+                      state={{semester: selectedCourse.term+'-'+selectedCourse.year}}>
+                    <button className='back-btn'>Cancel</button>
                 </Link>
                 <Link to="/shopping-cart"
                       state={{
-                        semester: selectedCourse.term+selectedCourse.year,
+                        semester: selectedCourse.term+'-'+selectedCourse.year,
                       }}>
-                    <button className='nextButton btn btn-primary'
+                    <button className='add-btn'
                             onClick={() => {handlePost()}}>Add</button>
                 </Link>                
             </div>

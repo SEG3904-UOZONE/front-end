@@ -25,8 +25,8 @@ const EnrollmentResultsPage = () => {
     }
     
     return(
-        <>
-            <h1 className='mt-3'>Enrollment Results</h1>
+        <div style={{fontSize: "20px"}}>
+            <h1 className='page-title'>Enrollment Results</h1>
             <div className='enrollmentResultsPageContainer my-5'>
             <div className="alert alert-info my-5" role="alert">
                 <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>
@@ -58,18 +58,18 @@ const EnrollmentResultsPage = () => {
             </div>
             <div className='resultsRedirectionButtons my-5'>
                 <Link to="/shopping-cart"
-                      state={{semester: courses[0].term+courses[0].year}}>
-                    <button className='cancelButton btn btn-secondary'>Shopping Cart</button>
+                      state={{semester: courses[0].term+'-'+courses[0].year}}>
+                    <button className='back-btn'>Shopping Cart</button>
                 </Link>
                 <Link to="/search-course"
                       state={{
                         semester: location.state.semester,
                       }}>
-                    <button className='nextButton btn btn-primary'>Search Courses</button>
+                    <button className='confirm-btn'>Search Courses</button>
                 </Link>
             </div>
         </div>
-        </>
+        </div>
     )
 }
 

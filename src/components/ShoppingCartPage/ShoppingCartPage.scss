@@ -30,3 +30,30 @@
 .course-table tr {
     vertical-align: baseline;
 }
+
+#step-two-btn {
+    width: 350px;
+    height: 50px;
+    font-size: 1.5rem;
+    color: white;
+    background-color: rgb(143, 0, 26);
+
+    &:hover {
+        background-color: rgb(105, 0, 19);
+    }
+}
+
+.search-course-btn {
+    margin-top: 1rem;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(45, 45, 44);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    &:hover{
+        color: rgb(45, 45, 44);
+        background-color: white;
+    }
+}

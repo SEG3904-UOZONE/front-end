@@ -16,7 +16,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.alert-info {
+.alert-info, .alert-danger {
     margin-left: 15%;
     width: 70%;
     display: flex;
@@ -29,10 +29,4 @@
     display: flex;
     justify-content: center;
     column-gap: 200px;
-}
-
-.cancelOrConfirmContainer button {
-    width: 200px;
-    height: 50px;
-    font-size: 25px;
 }

@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './SearchCourse.scss'
 
 const SearchCourse = () => {
+
+    const location = useLocation();
+    const [semesterCode, setSemesterCode] = useState<string>(location.state.semester);
 
     let [hideAdvancedSearch, setHideAdvancedSearch] = useState<boolean>(true)
     let [advancedSearchText, setAdvancedSearchText] = useState<string>('Advanced Search')
@@ -21,17 +24,25 @@ const SearchCourse = () => {
 
     return(
         <div className='search-course-main'>
-            <h1 className='mt-5'>Search Course</h1>
+            <div className='page-title'>
+                <span>Search Course</span>
+            </div>
             <div id="form-container">
-                <form className='mt-5 form-section'>
-                    <h2 className='my-5'>Insert course information</h2>
+                <div className='cancel-div'>
+                    <Link  to="/shopping-cart"
+                            state={{semester: semesterCode}}>
+                            <i className="bi bi-arrow-left-circle" style={{fontSize: "50px", color: "black"}}></i>
+                    </Link>
+                </div>
+                <form className='form-section'>
+                    <h2 className='my-4'>Insert course information</h2>
                     <div className="form-group inline-filter">
                         <label htmlFor="subjectInput">Course Subject</label>
-                        <input type="text" className="form-control" id="subjectInpu" placeholder="AAA" onChange={e => setCourseSubject((e.target.value).toUpperCase())}/>
+                        <input type="text" className="form-control" id="subjectInpu" placeholder="AAA" maxLength={3} onChange={e => setCourseSubject((e.target.value).toUpperCase())}/>
                     </div>
                     <div className="form-group inline-filter ">
                         <label htmlFor="courseNumberInput">Course Number</label>
-                        <input type="text" className="form-control" id="courseNumberInput" placeholder="1234" onChange={e => setCourseNumber(parseInt(e.target.value))}/>
+                        <input type="number" className="form-control" id="courseNumberInput" placeholder="1234" max={9999} onChange={e => setCourseNumber(parseInt(e.target.value))}/>
                     </div>
                     <div className="form-group inline-filter" hidden={hideAdvancedSearch}>
                         <label htmlFor="courseCareerInput">Course Career</label>
@@ -102,7 +113,8 @@ const SearchCourse = () => {
                     <Link  to="/courses-result"
                            state={{
                                 courseSubject: courseSubject,
-                                courseNumber: courseNumber
+                                courseNumber: courseNumber,
+                                semester: semesterCode
                             }}>
                         <button type="submit" id="submit-seach-btn">Search</button>
                     </Link>
