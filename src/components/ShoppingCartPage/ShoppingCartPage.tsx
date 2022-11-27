@@ -47,18 +47,6 @@ const AddCourseMainPage = (props: any) => {
         }
     }
 
-    
-
-    let getCourseClassStatus = (capacity: number, taken: number, isClosed: boolean): string => {
-        
-        if (isClosed) {
-            return "Closed"
-        } else if ((capacity-taken) < 1) {
-            return "Pending"
-        }
-        return "Open"
-    }
-
     return(
         <>
             <h1 className='mt-5 page-title'>Shopping Cart Page</h1>
@@ -124,7 +112,7 @@ const AddCourseMainPage = (props: any) => {
                                                                 <td><b>{courseClass.day.en.substring(0,2)} :</b> {courseClass.startTime}-{courseClass.endTime}</td>
                                                                 <td>{courseClass.location.address} <br/> ({courseClass.location.department}) {courseClass.location.room}</td>
                                                                 <td>{courseClass.instructor}</td>
-                                                                <td>{getCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</td>
+                                                                <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</td>
                                                                 <td>{GetCourseUnits(course, index)}</td>
                                                                 <td>{removeCourseFromList(index, course.cart_item_id, course.code+course.number)}</td>
                                                             </tr>

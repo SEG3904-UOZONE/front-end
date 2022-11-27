@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { GetCourseUnits } from '../utils/GetCourseUnits';
+import { GetCourseClassStatus } from '../utils/GetCourseClassStatus';
 
 const CoursesResultPage = (props: any) => {
 
@@ -36,17 +37,6 @@ const CoursesResultPage = (props: any) => {
         }
     })
     
-
-    let getCourseClassStatus = (capacity: number, taken: number, isClosed: boolean): string => {
-        
-        if (isClosed) {
-            return "Closed"
-        } else if ((capacity-taken) < 1) {
-            return "Pending"
-        }
-        return "Open"
-    }
-
     const selectButton = (course: any, index: number) => {
         if (index == 0) {
             return(
@@ -133,7 +123,7 @@ const CoursesResultPage = (props: any) => {
                                                                 <td>{courseClass.location.address} <br/> ({courseClass.location.department}) {courseClass.location.room}</td>
                                                                 <td>{courseClass.instructor}</td>
                                                                 <td>{meetingDates(course, index)}</td>
-                                                                <td>{getCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</td>
+                                                                <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</td>
                                                                 <td>{GetCourseUnits(course, index)}</td>
                                                                 <td>{selectButton(course, index)}</td>
                                                             </tr>
