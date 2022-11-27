@@ -15,7 +15,14 @@
 }
 
 .course-table {
-    margin-top: 50px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+.dark-red-btn {
+    background-color: #8f001a !important;
+    border: 0 !important;
+    &:hover {
+        background-color: #680013 !important;
+    }
+  }

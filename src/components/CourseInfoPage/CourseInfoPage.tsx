@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './CourseInfoPage.scss'
 import { GetCourseClassStatus } from '../utils/Utils'
+import axios from 'axios';
 
 const CourseInfoPage = (props: any) => {
 
+    // set local variables
     const location = useLocation();
     const [selectedCourse, setSelectedCourse] = useState(location.state.course);
     const [selectedCourseOptionsToSend, setSelectedCourseOptionsToSend] = useState({...selectedCourse});
@@ -12,6 +14,8 @@ const CourseInfoPage = (props: any) => {
     const [dgdSession, setDgdSession] = useState({});
     const [courseComponentsSet, setCourseComponentsSet] = useState(new Array);
 
+
+    // Define all course components available from the selected course, such as LEC, DGD and LAB (if they exist)
     useEffect(() => {
         const courseComponentsSetLocal = new Set()
         for(let index=0; index < (selectedCourse.classes).length; index++) {
@@ -20,6 +24,7 @@ const CourseInfoPage = (props: any) => {
         setCourseComponentsSet(Array.from(courseComponentsSetLocal))
     }, [])
 
+    // Add a different selection button depending on the type of course component
     const selectButton = (component: any, index: number) => {
         if (component.type != 'LEC') {
             return(
@@ -30,19 +35,20 @@ const CourseInfoPage = (props: any) => {
                        onClick={() => selectDGDOrLAB(component)}/>
             )
         } else {
+            // lecture component is selected by default
             return(
                 <input className="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled />
             )
         }
     }
 
+    // Set the lab or dgd session based on the 
     const selectDGDOrLAB = (component: any): void => {
         if (component.type == 'DGD') {
             setDgdSession(component)
         } else { // equals to LAB
             setLabSession(component)
         }
-        
     }
 
     const updateCourseWithSelectedOptions = (): void => {
@@ -78,21 +84,50 @@ const CourseInfoPage = (props: any) => {
         }
     }
 
+    // Helper function for the POST request
+    const handlePost = async (): Promise<any> => {
+
+        // add the selected lab and dgd sessions if they exist
+        updateCourseWithSelectedOptions()
+
+        // create a new object to return
+        const newCourseToAdd = {
+            cart_item_id: selectedCourseOptionsToSend.course_id + 100,
+            code: selectedCourseOptionsToSend.code,
+            number: selectedCourseOptionsToSend.number,
+            term: selectedCourseOptionsToSend.term,
+            year: selectedCourseOptionsToSend.year,
+            section: selectedCourseOptionsToSend.section,
+            units: selectedCourseOptionsToSend.units,
+            isClosed: selectedCourseOptionsToSend.isClosed,
+            name_en: selectedCourseOptionsToSend.name_en,
+            name_fr: selectedCourseOptionsToSend.name_fr,
+            startDate: selectedCourseOptionsToSend.startDate,
+            endDate: selectedCourseOptionsToSend.endDate,
+            classes: `${JSON.stringify(selectedCourseOptionsToSend.classes)}`
+        }
+
+        // Add the new course selected to the cart table
+        await axios.post('/cart', newCourseToAdd)
+                    .then(() => console.log("Course added successfully"))
+                    .catch(err => console.log(err));
+    }
+
     return (    
         <>
-        <h1 className='mt-5'>Course Info Page</h1>
+        <h1 className='page-title'>Course Info Page</h1>
         <div className='courseInfoPageContainer my-5'>
-            <h1 className='mt-5'>{selectedCourse.code+selectedCourse.number} - {selectedCourse.name.en}</h1>
+            <h1 className='mt-5' style={{color: "rgb(143, 0, 26)"}}>{selectedCourse.code+selectedCourse.number} - {selectedCourse.name_en}</h1>
             <div className="courseGeneralInfo mt-5">
                 <div className="courseDetails">
                     <div>
-                        <h3>Course Details</h3>
-                        <div className='px-4'>
+                        <h3 style={{fontWeight: "600"}}>Course Details</h3>
+                        <div className='px-2'>
                             <div>
                                 <h5 style={{display: "inline"}}>Section:</h5> &nbsp; <span>{selectedCourse.section}</span>
                             </div>
                             <div>
-                                <h5 style={{display: "inline"}}>Units:</h5> &nbsp; <span>{selectedCourse.units.toFixed(2)}</span>
+                                <h5 style={{display: "inline"}}>Units:</h5> &nbsp; <span>{parseInt(selectedCourse.units).toFixed(2)}</span>
                             </div>
                             <div>
                                 <h5 style={{display: "inline"}}>Grading:</h5> &nbsp; <span>D (50%) Passing Grade</span>
@@ -108,8 +143,8 @@ const CourseInfoPage = (props: any) => {
                     </div>
                 </div>
                 <div className="enrollmentInfo">
-                    <h3>Enrollement info</h3>
-                    <div className='px-4'>
+                    <h3 style={{fontWeight: "600"}}>Enrollement info</h3>
+                    <div className='px-2'>
                         <div>
                             <h5 style={{display: "inline"}}>Prerequisite:</h5> &nbsp; <span>ITI1120</span>
                         </div>
@@ -128,7 +163,7 @@ const CourseInfoPage = (props: any) => {
                         return(
                                 
                                 <div className='courseComponents' key={key}>
-                                    <h4>{showCourseComponentName(component)}</h4>
+                                    <h4 style={{color: "rgb(143, 0, 26)"}}>{showCourseComponentName(component)}</h4>
                                     <table className="table table-striped mb-5">
                                         <thead>
                                             <tr>
@@ -170,18 +205,16 @@ const CourseInfoPage = (props: any) => {
             </div>
             <div className='cancelOrSelectContainer mb-5'>
                 <Link to="/shopping-cart"
-                      state={{semester: selectedCourse.term+selectedCourse.year}}>
-                    <button className='cancelButton btn btn-danger'>Cancel</button>
+                      state={{semester: selectedCourse.term+'-'+selectedCourse.year}}>
+                    <button className='back-btn'>Cancel</button>
                 </Link>
                 <Link to="/shopping-cart"
                       state={{
-                        semester: selectedCourse.term+selectedCourse.year,
-                        selectCourseOptions: selectedCourseOptionsToSend
+                        semester: selectedCourse.term+'-'+selectedCourse.year,
                       }}>
-                    <button className='nextButton btn btn-primary'
-                            onClick={() => {updateCourseWithSelectedOptions()}}>Add</button>
-                </Link>
-                
+                    <button className='add-btn'
+                            onClick={() => {handlePost()}}>Add</button>
+                </Link>                
             </div>
         </div></>
     )

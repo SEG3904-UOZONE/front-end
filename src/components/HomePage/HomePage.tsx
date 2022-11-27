@@ -18,8 +18,8 @@ const HomePage = () => {
 
     return(
         <div>
-            <div id='addCoursesTitle'>
-                <span>Add Courses</span>
+            <div className='page-title'>
+                <span>Select Term</span>
             </div>
             <div>
                 <h2>Select an acadamic term to proceed</h2>

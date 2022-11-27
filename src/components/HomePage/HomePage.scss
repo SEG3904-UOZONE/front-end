@@ -16,7 +16,7 @@
     width: 100%;
     height: 100%;
     color: rgb(242, 242, 242);
-    font-size: 45px;
+    font-size: 35px;
     background-color: rgb(143, 0, 26);
 
     &:hover {
@@ -27,12 +27,3 @@
         color: rgb(113, 0, 21) !important;
     }
 }
-
-#addCoursesTitle {
-    font-size: 60px;
-    font-weight: 500;
-    margin: 20px;
-    color: rgb(143, 0, 26);
-    border: solid rgb(143, 0, 26);
-    border-width: 0 0 1px 0;
-  }
