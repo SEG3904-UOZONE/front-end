@@ -20,7 +20,9 @@ const AddCourseMainPage = (props: any) => {
              .catch(err => console.error(err));
      }, []);
 
-     let filteredCart = cart.filter(course => {
+    
+    // filter the cart based on the selected term
+    let filteredCart = cart.filter(course => {
         const semester = semesterCode.split('-')
         if ((course.term == semester[0]) && (course.year == semester[1]) ) {
             isEmptyCart = false
@@ -43,18 +45,6 @@ const AddCourseMainPage = (props: any) => {
                 </button>
             )
         }
-    }
-
-    
-
-    let getCourseClassStatus = (capacity: number, taken: number, isClosed: boolean): string => {
-        
-        if (isClosed) {
-            return "Closed"
-        } else if ((capacity-taken) < 1) {
-            return "Pending"
-        }
-        return "Open"
     }
 
     return(
@@ -122,7 +112,7 @@ const AddCourseMainPage = (props: any) => {
                                                                 <td><b>{courseClass.day.en.substring(0,2)} :</b> {courseClass.startTime}-{courseClass.endTime}</td>
                                                                 <td>{courseClass.location.address} <br/> ({courseClass.location.department}) {courseClass.location.room}</td>
                                                                 <td>{courseClass.instructor}</td>
-                                                                <td>{getCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</td>
+                                                                <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</td>
                                                                 <td>{GetCourseUnits(course, index)}</td>
                                                                 <td>{removeCourseFromList(index, course.cart_item_id, course.code+course.number)}</td>
                                                             </tr>

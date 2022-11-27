@@ -117,7 +117,17 @@ const CourseInfoPage = (props: any) => {
         <>
         <h1 className='page-title'>Course Info Page</h1>
         <div className='courseInfoPageContainer my-5'>
-            <h1 className='mt-5' style={{color: "rgb(143, 0, 26)"}}>{selectedCourse.code+selectedCourse.number} - {selectedCourse.name_en}</h1>
+            <div className='cancel-div mx-5 mt-4'>
+                    <Link  to="/courses-result"
+                            state={{
+                                semester:selectedCourse.term+'-'+selectedCourse.year,
+                                courseSubject: selectedCourse.code,
+                                courseNumber: selectedCourse.number
+                            }}>
+                            <i className="bi bi-arrow-left-circle" style={{fontSize: "50px", color: "black"}}></i>
+                    </Link>
+                </div>
+            <h1 style={{color: "rgb(143, 0, 26)"}}>{selectedCourse.code+selectedCourse.number} - {selectedCourse.name_en}</h1>
             <div className="courseGeneralInfo mt-5">
                 <div className="courseDetails">
                     <div>

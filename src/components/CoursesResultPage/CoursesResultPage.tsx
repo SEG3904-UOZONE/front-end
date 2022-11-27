@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { GetCourseUnits } from '../utils/GetCourseUnits';
+import { GetCourseClassStatus } from '../utils/GetCourseClassStatus';
 
 const CoursesResultPage = (props: any) => {
 
@@ -22,18 +23,20 @@ const CoursesResultPage = (props: any) => {
     const courseNumber = location.state.courseNumber
     const [semesterCode, setSemesterCode] = useState<string>(location.state.semester);
     const navigate = useNavigate();
-    
+    let isEmptySearchResults: boolean = true
 
-    let getCourseClassStatus = (capacity: number, taken: number, isClosed: boolean): string => {
-        
-        if (isClosed) {
-            return "Closed"
-        } else if ((capacity-taken) < 1) {
-            return "Pending"
+    // filter the search results based on the selected criterias
+    const filteredSearchResults = courses.filter(course => {
+        const semester = semesterCode.split('-')
+        if ((course.code == courseSubject) 
+            && (course.number == courseNumber)
+            && (course.term == semester[0])
+            && (course.year == semester[1]) ) {
+                isEmptySearchResults = false
+                return course
         }
-        return "Open"
-    }
-
+    })
+    
     const selectButton = (course: any, index: number) => {
         if (index == 0) {
             return(
@@ -69,11 +72,11 @@ const CoursesResultPage = (props: any) => {
             <div className='courses-result-main-container my-5'>
                 <div className="courses-list-container px-5">
                     <h2 className='my-3'>Available <b>{courseSubject} {courseNumber}</b> Courses for the <b>{semesterCode.split('-').join(' ').toUpperCase()}</b> term</h2>
-                    <div className="alert alert-info mt-5" role="alert" hidden={courses.length!=0}>
+                    <div className="alert alert-info mt-5" role="alert" hidden={isEmptySearchResults}>
                         <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>
                         <p>Select one of the courses based on the criterias you entered, you can also modify the search query, or return to the shopping cart</p>
                     </div>
-                    <div className="alert alert-danger mt-5" role="alert" hidden={courses.length==0}>
+                    <div className="alert alert-danger mt-5" role="alert" hidden={!isEmptySearchResults}>
                         <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>
                         <p>The search returned no results, you can modify the search query, or return to the shopping cart</p>
                     </div>
@@ -90,16 +93,7 @@ const CoursesResultPage = (props: any) => {
                         </Link>
                     </div>
                     {
-                        courses
-                            .filter(course => {
-                                const semester = semesterCode.split('-')
-                                if ((course.code == courseSubject) 
-                                    && (course.number == courseNumber)
-                                    && (course.term == semester[0])
-                                    && (course.year == semester[1]) ) {
-                                    return course
-                                }
-                            })
+                        filteredSearchResults
                             .map((course: any, key: number) => {
                                 return (    
                                     <div className='course-table my-5' key={key}>
@@ -129,7 +123,7 @@ const CoursesResultPage = (props: any) => {
                                                                 <td>{courseClass.location.address} <br/> ({courseClass.location.department}) {courseClass.location.room}</td>
                                                                 <td>{courseClass.instructor}</td>
                                                                 <td>{meetingDates(course, index)}</td>
-                                                                <td>{getCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</td>
+                                                                <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</td>
                                                                 <td>{GetCourseUnits(course, index)}</td>
                                                                 <td>{selectButton(course, index)}</td>
                                                             </tr>

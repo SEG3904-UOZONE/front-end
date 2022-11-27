@@ -1,9 +1,9 @@
-export const GetCourseClassStatus = (capacity: number, taken: number, isClosed: boolean): string => {
+export const GetCourseClassStatus = (capacity: number, taken: number, isClosed: boolean): any => {
         
     if (isClosed) {
-        return "Closed"
+        return <span><i className="bi bi-square-fill" style={{color: "blue"}}></i> Closed</span>
     } else if ((capacity-taken) < 1) {
-        return "Pending"
+        return <span><i className="bi bi-triangle-fill" style={{color: "orange"}}></i> Wait List</span>
     }
-    return "Open"
+    return <span><i className="bi bi-circle-fill" style={{color: "green"}}></i> Open</span>
 }
