@@ -1,0 +1,50 @@
+{
+    "common": {
+        "fall": "Automne",
+        "winter": "Hiver",
+        "term-long": "Trimestre",
+        "search": "Rechercher",
+        "open": "Ouvert",
+        "wait-list": "Liste attente",
+        "closed": "Fermé"
+    },
+    "header": {
+        "navbar": {
+            "my-schedule-link": "Mon Horaire de cours",
+            "add-link": "Ajout",
+            "drop-link": "Abandon",
+            "swap-link": "Changement",
+            "term-information-link": "Données Trimestre"
+        }
+    },
+    "table": {
+        "component": "Composante",
+        "section": "Section",
+        "date-time": "Jours et Heures",
+        "room": "Local",
+        "instructor": "Enseignant",
+        "status": "Statut",
+        "units": "Crédits"
+    },
+    "home-page": {
+        "select-term-title": "Sélectionnez un trimestre",
+        "description": "Sélectionnez un trimestre académique pour continuer",
+        "fall": "Automne",
+        "winter": "Hiver"
+    },
+    "shopping-cart-page": {
+        "shopping-cart": "Panier",
+        "description": "Panier pour le",
+        "term": "Trimestre",
+        "add-courses": "Ajouter les cours à l'horaire",
+        "change-term": "Changer Trim.",
+        "class-search": {
+            "title": "Recherche de cours",
+            "description": "Recherche de classes selon différents critères"
+        },
+        "requirements-search": {
+            "title": "Recherche de mes exigences",
+            "description": "Recherchez des cours en fonction des exigences de votre programme"
+        }
+    }
+}

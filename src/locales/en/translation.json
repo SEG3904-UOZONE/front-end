@@ -1,0 +1,50 @@
+{
+    "common": {
+        "fall": "Fall",
+        "winter": "Winter",
+        "term-long": "Term",
+        "search": "Search",
+        "open": "Open",
+        "wait-list": "Wait List",
+        "closed": "Closed"
+    },
+    "header": {
+        "navbar": {
+            "my-schedule-link": "My Class Schedule",
+            "add-link": "Add",
+            "drop-link": "Drop",
+            "swap-link": "Swap",
+            "term-information-link": "Term Information"
+        }
+    },
+    "table": {
+        "component": "Component",
+        "section": "Section",
+        "date-time": "Day & Time",
+        "room": "Room",
+        "instructor": "Instructor",
+        "status": "Status",
+        "units": "Units"
+    },
+    "home-page": {
+        "select-term-title": "Select Term",
+        "description": "Select an academic term to proceed",
+        "fall": "Fall",
+        "winter": "Winter"
+    },
+    "shopping-cart-page": {
+        "shopping-cart": "Shopping Cart",
+        "description": "Shopping Cart for the",
+        "term": "Term",
+        "add-courses": "Add Courses to Schedule",
+        "change-term": "Change Term",
+        "class-search": {
+            "title": "Class Search",
+            "description": "Search classes based on different criteria"
+        },
+        "requirements-search": {
+            "title": "My Requirements Search",
+            "description": "Search classes based on your program requirements"
+        }
+    }
+}
