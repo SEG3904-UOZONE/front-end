@@ -67,13 +67,13 @@ const AddCourseMainPage = (props: any) => {
             <h1 className='mt-5 page-title'>{t('shopping-cart-page.shopping-cart')}</h1>
             <div className='add-course-main-container my-5'>
                 <div className="add-course-search">
-                    <div className="free-serach py-4">
+                    <div className="py-4" id='changeTermComponent'>
                         <h4 className='component-title'>{academicTerm(semesterCode)} {t('common.term-long')}</h4>
                         <Link to="/">
                             <button className='change-term-btn'>{t('shopping-cart-page.change-term')}</button>
                         </Link>
                     </div>
-                    <div className="free-serach my-3 py-4">
+                    <div className="free-search my-3 py-4">
                         <h4 className='component-title'>{t('shopping-cart-page.class-search.title')}</h4>
                         <p>{t('shopping-cart-page.class-search.description')}</p>
                         <Link   to="/search-course"
@@ -100,45 +100,47 @@ const AddCourseMainPage = (props: any) => {
                             <button className="btn mt-5" id='step-two-btn'>{t('shopping-cart-page.add-courses')} <i className="bi bi-arrow-right-circle"></i></button>
                         </Link>
                     </div>
-                    {
-                        filteredCart
-                            .map((course, key) => {
-                                return (    
-                                    <div className='course-table my-5' key={key}>
-                                        <h4 style={{color: '#8f001a'}}>{course.code+course.number} [{course.section}] - {course.name_en}</h4>
-                                        <table className="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                <th scope="col">{t('table.component')}</th>
-                                                <th scope="col">{t('table.date-time')}</th>
-                                                <th scope="col">{t('table.room')}</th>
-                                                <th scope="col">{t('table.instructor')}</th>
-                                                <th scope="col">{t('table.status')}</th>
-                                                <th scope="col">{t('table.units')}</th>
-                                                <th scope="col"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {
-                                                    course.classes.map((courseClass:any, index: number) => {
-                                                        return (
-                                                            <tr key={key+'-'+index}>
-                                                                <td>{courseClass.type} - {courseClass.sectionCode}</td>
-                                                                <td><b>{courseClass.day.en.substring(0,2)} :</b> {courseClass.startTime}-{courseClass.endTime}</td>
-                                                                <td>{courseClass.location.address} <br/> ({courseClass.location.department}) {courseClass.location.room}</td>
-                                                                <td>{courseClass.instructor}</td>
-                                                                <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed, t)}</td>
-                                                                <td>{GetCourseUnits(course, index)}</td>
-                                                                <td>{removeCourseFromList(index, course.cart_item_id, course.code+course.number)}</td>
-                                                            </tr>
-                                                        )
-                                                    })
-                                                }
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                )}
+                    <div className="cart-tables">
+                        {
+                            filteredCart
+                                .map((course, key) => {
+                                    return (    
+                                        <div className='course-table my-5' key={key}>
+                                            <h4 style={{color: '#8f001a'}}>{course.code+course.number} [{course.section}] - {course.name_en}</h4>
+                                            <table className="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                    <th scope="col">{t('table.component')}</th>
+                                                    <th scope="col">{t('table.date-time')}</th>
+                                                    <th scope="col">{t('table.room')}</th>
+                                                    <th scope="col">{t('table.instructor')}</th>
+                                                    <th scope="col">{t('table.status')}</th>
+                                                    <th scope="col">{t('table.units')}</th>
+                                                    <th scope="col"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {
+                                                        course.classes.map((courseClass:any, index: number) => {
+                                                            return (
+                                                                <tr key={key+'-'+index}>
+                                                                    <td>{courseClass.type} - {courseClass.sectionCode}</td>
+                                                                    <td><b>{courseClass.day.en.substring(0,2)} :</b> {courseClass.startTime}-{courseClass.endTime}</td>
+                                                                    <td>{courseClass.location.address} <br/> ({courseClass.location.department}) {courseClass.location.room}</td>
+                                                                    <td>{courseClass.instructor}</td>
+                                                                    <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed, t)}</td>
+                                                                    <td>{GetCourseUnits(course, index)}</td>
+                                                                    <td>{removeCourseFromList(index, course.cart_item_id, course.code+course.number)}</td>
+                                                                </tr>
+                                                            )
+                                                        })
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    )}
                         )}
+                    </div>
                     <div className="alert alert-danger mt-5" role="alert" hidden={filteredCart.length != 0}>
                         <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>
                         <h4>{t('shopping-cart-page.empty-cart')}</h4>

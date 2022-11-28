@@ -33,7 +33,8 @@ const HomePage = () => {
                     <Link 
                         to="/shopping-cart"
                         state={{semester: semesterCode}}>
-                        <button className='btn' 
+                        <button className='btn'
+                                id='fall-2022-btn' 
                                 value={'fall-2022'} 
                                 onClick={async (e) => {
                                     openfile((e.target as HTMLButtonElement).value);
@@ -47,6 +48,7 @@ const HomePage = () => {
                         to="/shopping-cart"
                         state={{semester: semesterCode}}>
                         <button className='btn'
+                                id='winter-2023-btn' 
                                 value={'winter-2023'} 
                                 onClick={async (e) => {
                                     openfile((e.target as HTMLButtonElement).value);
