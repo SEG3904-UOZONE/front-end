@@ -93,5 +93,16 @@
         "course-component": "Course Component",
         "campus": "Campus",
         "location": "Location"
+    },
+    "enrollment-results-page": {
+        "title": "Enrollment Results",
+        "info": "View the following status report for enrollment confirmations and errors.",
+        "course": "Course",
+        "message": "Message",
+        "status": "Status",
+        "enrolled": "Enrolled",
+        "error": "Error",
+        "search-courses": "Search Courses",
+        "success-message": "You have successfully enrolled in this course. The course is now added to your Schedule"
     }
 }

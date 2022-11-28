@@ -93,5 +93,16 @@
         "course-component": "Composante",
         "campus": "Campus",
         "location": "Localisation"
+    },
+    "enrollment-results-page": {
+        "title": "Résultats d'Inscription",
+        "info": "Consultez le rapport d'état suivant pour les confirmations d'inscription et les erreurs.",
+        "course": "Cours",
+        "message": "Message",
+        "status": "Statut",
+        "enrolled": "Inscrit",
+        "error": "Erreur",
+        "search-courses": "Rechercher Cours",
+        "success-message": "Vous vous êtes inscrit avec succès à ce cours. Le cours est maintenant ajouté à votre emploi du temps"
     }
 }
