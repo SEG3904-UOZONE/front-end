@@ -8,7 +8,10 @@
         "wait-list": "Wait List",
         "closed": "Closed",
         "confirm": "Confirm",
-        "back": "Back"
+        "back": "Back",
+        "select": "Select",
+        "shopping-cart": "Shopping Cart",
+        "modify-search": "Modify Search"
     },
     "header": {
         "navbar": {
@@ -56,5 +59,11 @@
     "confirm-courses-page": {
         "title": "Confirm Courses",
         "description": "Select Confirm to process your request for the courses listed below and add it to your schedule. To exit without adding these classes, select Cancel. Select the Trash icon to remove a course from the list (it will still be saved in your Shopping Cart for later)"
+    },
+    "courses-result-page": {
+        "title": "Courses Result",
+        "info": "Select one of the courses based on the criteria you entered, you can also modify the search query, or return to the shopping cart",
+        "description": "available courses for the",
+        "empty-courses": "The search returned no results, you can modify the search query, or return to the shopping cart"
     }
 }

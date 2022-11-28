@@ -4,8 +4,13 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { GetCourseUnits } from '../utils/GetCourseUnits';
 import { GetCourseClassStatus } from '../utils/GetCourseClassStatus';
+import { useTranslation } from 'react-i18next';
+
 
 const CoursesResultPage = (props: any) => {
+
+    // i18n
+    const { t, i18n } = useTranslation();
 
     // Grouping the API data inside of an array of objects.
     let [courses, setCourses] = useState<any[]>([]);
@@ -16,6 +21,16 @@ const CoursesResultPage = (props: any) => {
             .then(res => setCourses(res.data))
             .catch(err => console.error(err));
     }, []);
+
+    // Extract academic term name
+    const academicTerm = (semesterCode: string) => {
+        const semesterAndYear = semesterCode.split('-')
+        if (semesterAndYear[0] == 'fall') {
+            return `${t('common.fall').toUpperCase()} ${semesterAndYear[1]}`
+        } else {
+            return `${t('common.winter').toUpperCase()} ${semesterAndYear[1]}`
+        }
+    }
     
     // set the local variables
     const location = useLocation();
@@ -51,7 +66,7 @@ const CoursesResultPage = (props: any) => {
                             });
                         }}
                         >
-                        <button className='btn btn-danger dark-red-btn'>Select</button>
+                        <button className='btn btn-danger dark-red-btn'>{t('common.select')}</button>
                     </Link>
             )
         }
@@ -68,28 +83,28 @@ const CoursesResultPage = (props: any) => {
 
     return(
         <>
-            <h1 className='page-title'>Courses Result Page</h1>
+            <h1 className='page-title'>{t('courses-result-page.title')}</h1>
             <div className='courses-result-main-container my-5'>
                 <div className="courses-list-container px-5">
-                    <h2 className='my-3'>Available <b>{courseSubject} {courseNumber}</b> Courses for the <b>{semesterCode.split('-').join(' ').toUpperCase()}</b> term</h2>
+                    <h2 className='my-3'><b>{courseSubject} {courseNumber}</b> {t('courses-result-page.description')} <b>{academicTerm(semesterCode)}</b> {t('common.term-long')}</h2>
                     <div className="alert alert-info mt-5" role="alert" hidden={isEmptySearchResults}>
                         <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>
-                        <p>Select one of the courses based on the criterias you entered, you can also modify the search query, or return to the shopping cart</p>
+                        <p>{t('courses-result-page.info')}</p>
                     </div>
                     <div className="alert alert-danger mt-5" role="alert" hidden={!isEmptySearchResults}>
                         <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>
-                        <p>The search returned no results, you can modify the search query, or return to the shopping cart</p>
+                        <p>{t('courses-result-page.empty-courses')}</p>
                     </div>
                     <div className='resultsRedirectionButtons my-5'>
                         <Link to="/shopping-cart"
                             state={{semester: semesterCode}}>
-                            <button className='back-btn'>Shopping Cart</button>
+                            <button className='back-btn'>{t('common.shopping-cart')}</button>
                         </Link>
                         <Link to="/search-course"
                             state={{
                                 semester: semesterCode,
                             }}>
-                            <button className='modify-search-btn'>Modify Search</button>
+                            <button className='modify-search-btn'>{t('common.modify-search')}</button>
                         </Link>
                     </div>
                     {
@@ -101,15 +116,15 @@ const CoursesResultPage = (props: any) => {
                                         <table className="table table-striped">
                                             <thead>
                                                 <tr>
-                                                <th scope="col">Component</th>
-                                                <th scope="col">Day</th>
-                                                <th scope="col">Time</th>
-                                                <th scope="col">Room</th>
-                                                <th scope="col">Instructor</th>
-                                                <th scope="col">Meeting Dates</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Units</th>
-                                                <th scope="col"></th>
+                                                    <th scope="col">{t('table.component')}</th>
+                                                    <th scope="col">{t('table.day')}</th>
+                                                    <th scope="col">{t('table.time')}</th>
+                                                    <th scope="col">{t('table.room')}</th>
+                                                    <th scope="col">{t('table.instructor')}</th>
+                                                    <th scope="col">{t('table.meeting-dates')}</th>
+                                                    <th scope="col">{t('table.status')}</th>
+                                                    <th scope="col">{t('table.units')}</th>
+                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -123,7 +138,7 @@ const CoursesResultPage = (props: any) => {
                                                                 <td>{courseClass.location.address} <br/> ({courseClass.location.department}) {courseClass.location.room}</td>
                                                                 <td>{courseClass.instructor}</td>
                                                                 <td>{meetingDates(course, index)}</td>
-                                                                <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</td>
+                                                                <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed, t)}</td>
                                                                 <td>{GetCourseUnits(course, index)}</td>
                                                                 <td>{selectButton(course, index)}</td>
                                                             </tr>

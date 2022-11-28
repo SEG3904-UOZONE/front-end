@@ -8,7 +8,10 @@
         "wait-list": "Liste attente",
         "closed": "Fermé",
         "confirm": "Confirmer",
-        "back": "Retour"
+        "back": "Retour",
+        "select": "Sélection",
+        "shopping-cart": "Panier",
+        "modify-search": "Modifier recherche"
     },
     "header": {
         "navbar": {
@@ -56,5 +59,11 @@
     "confirm-courses-page": {
         "title": "Confirmer les Courses",
         "description": "Sélectionnez Confirmer pour traiter votre demande pour les cours répertoriés ci-dessous et l'ajouter à votre emploi du temps. Pour quitter sans ajouter ces classes, sélectionnez Annuler. Sélectionnez l'icône Corbeille pour supprimer un cours de la liste (il sera toujours enregistré dans votre panier pour plus tard)"
+    },
+    "courses-result-page": {
+        "title": "Résultat des Cours",
+        "info": "Sélectionnez l'un des cours en fonction des critères que vous avez saisis, vous pouvez également modifier la requête de recherche ou retourner au panier",
+        "description": "cours disponibles pour le",
+        "empty-courses": "La recherche n'a donné aucun résultat, vous pouvez modifier la requête de recherche ou retourner au panier"
     }
 }

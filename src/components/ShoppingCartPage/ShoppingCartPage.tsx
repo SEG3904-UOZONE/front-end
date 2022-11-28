@@ -19,9 +19,9 @@ const AddCourseMainPage = (props: any) => {
     const academicTerm = (semesterCode: string) => {
         const semesterAndYear = semesterCode.split('-')
         if (semesterAndYear[0] == 'fall') {
-            return `${t('common.fall')} ${semesterAndYear[1]}`
+            return `${t('common.fall').toUpperCase()} ${semesterAndYear[1]}`
         } else {
-            return `${t('common.winter')} ${semesterAndYear[1]}`
+            return `${t('common.winter').toUpperCase()} ${semesterAndYear[1]}`
         }
     }
 
