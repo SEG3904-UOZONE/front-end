@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import './HomePage.scss'
+import { useTranslation } from 'react-i18next';
 
 const HomePage = () => {
+
+    // i18n
+    const { t, i18n } = useTranslation();
 
     const [semesterCode, setSemesterCode] = useState<string>('');
     const navigate = useNavigate();
@@ -19,10 +23,10 @@ const HomePage = () => {
     return(
         <div>
             <div className='page-title'>
-                <span>Select Term</span>
+                <span>{t('home-page.select-term-title')}</span>
             </div>
             <div>
-                <h2>Select an acadamic term to proceed</h2>
+                <h2>{t('home-page.description')}</h2>
             </div>
             <div className='term-selection-container'>
                 <div className="link-btn mx-5">
@@ -34,7 +38,7 @@ const HomePage = () => {
                                 onClick={async (e) => {
                                     openfile((e.target as HTMLButtonElement).value);
                                 }}
-                                >Fall 2022
+                                >{t('home-page.fall')} 2022
                         </button>
                     </Link>
                 </div>
@@ -47,7 +51,7 @@ const HomePage = () => {
                                 onClick={async (e) => {
                                     openfile((e.target as HTMLButtonElement).value);
                                 }}
-                                >Winter 2023
+                                >{t('home-page.winter')} 2023
                         </button>
                     </Link>
                 </div>

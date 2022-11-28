@@ -1,0 +1,108 @@
+{
+    "common": {
+        "fall": "Fall",
+        "winter": "Winter",
+        "term-long": "Term",
+        "search": "Search",
+        "open": "Open",
+        "wait-list": "Wait List",
+        "closed": "Closed",
+        "confirm": "Confirm",
+        "back": "Back",
+        "select": "Select",
+        "add": "Add",
+        "cancel": "Cancel",
+        "shopping-cart": "Shopping Cart",
+        "modify-search": "Modify Search"
+    },
+    "header": {
+        "navbar": {
+            "my-schedule-link": "My Class Schedule",
+            "add-link": "Add",
+            "drop-link": "Drop",
+            "swap-link": "Swap",
+            "term-information-link": "Term Information"
+        }
+    },
+    "table": {
+        "component": "Component",
+        "section": "Section",
+        "date-time": "Day & Time",
+        "room": "Room",
+        "instructor": "Instructor",
+        "status": "Status",
+        "units": "Units",
+        "day": "Day",
+        "time": "Time",
+        "meeting-dates": "Meeting Dates"
+    },
+    "home-page": {
+        "select-term-title": "Select Term",
+        "description": "Select an academic term to proceed",
+        "fall": "Fall",
+        "winter": "Winter"
+    },
+    "shopping-cart-page": {
+        "shopping-cart": "Shopping Cart",
+        "description": "Shopping Cart for the",
+        "term": "Term",
+        "add-courses": "Add Courses to Schedule",
+        "change-term": "Change Term",
+        "empty-cart": "Shopping Cart is empty, try adding some courses to proceed with enrolling",
+        "class-search": {
+            "title": "Course Search",
+            "description": "Search courses based on different criteria"
+        },
+        "requirements-search": {
+            "title": "My Requirements Search",
+            "description": "Search courses based on your program requirements"
+        }
+    },
+    "confirm-courses-page": {
+        "title": "Confirm Courses",
+        "description": "Select Confirm to process your request for the courses listed below and add it to your schedule. To exit without adding these classes, select Cancel. Select the Trash icon to remove a course from the list (it will still be saved in your Shopping Cart for later)"
+    },
+    "courses-result-page": {
+        "title": "Courses Result",
+        "info": "Select one of the courses based on the criteria you entered, you can also modify the search query, or return to the shopping cart",
+        "description": "available courses for the",
+        "empty-courses": "The search returned no results, you can modify the search query, or return to the shopping cart"
+    },
+    "course-info-page": {
+        "title": "Course Info",
+        "course-details": "Course Details",
+        "grading": "Grading",
+        "passing-grade": "Passing Grade",
+        "start-date": "Start Date",
+        "end-date": "End Date",
+        "enrollment-info": "Enrollment Info",
+        "prerequisite": "Prerequisites",
+        "language": "Language",
+        "level": "Level"
+    },
+    "search-page": {
+        "title": "Search Course",
+        "description": "Insert course information",
+        "advanced-search": "Advanced Search",
+        "hide-advanced-search": "Hide Advanced Search",
+        "course-subject": "Course Subject",
+        "course-number": "Course Number",
+        "course-career": "Course Career",
+        "number-range": "Number Range",
+        "course-attribute": "Course Attribute",
+        "course-component": "Course Component",
+        "campus": "Campus",
+        "location": "Location"
+    },
+    "enrollment-results-page": {
+        "title": "Enrollment Results",
+        "info": "View the following status report for enrollment confirmations and errors.",
+        "course": "Course",
+        "message": "Message",
+        "status": "Status",
+        "enrolled": "Enrolled",
+        "error": "Error",
+        "search-courses": "Search Courses",
+        "success-message": "You have successfully enrolled in this course. The course is now added to your Schedule"
+    }
+}

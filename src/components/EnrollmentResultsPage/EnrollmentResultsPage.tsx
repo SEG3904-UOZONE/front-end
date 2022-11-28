@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './EnrollmentResultsPage.scss'
+import { useTranslation } from 'react-i18next';
+
 
 const EnrollmentResultsPage = () => {
+
+    // i18n
+    const { t, i18n } = useTranslation();
 
     const location = useLocation();
     const [courses, setCourses] = useState([...location.state.courses])
@@ -12,33 +17,33 @@ const EnrollmentResultsPage = () => {
             return(
                 <>
                     <i className="bi bi-check" style={{fontSize: "45px", color: "green"}}></i>
-                    <p>Enrolled</p>
+                    <p>{t('enrollment-results-page.enrolled')}</p>
                 </>
             )
         }
         return(
             <>
                 <i className="bi bi-x" style={{fontSize: "45px", color: "red"}}></i>
-                <p>Error</p>
+                <p>{t('enrollment-results-page.error')}</p>
             </>
         )
     }
     
     return(
         <div style={{fontSize: "20px"}}>
-            <h1 className='page-title'>Enrollment Results</h1>
+            <h1 className='page-title'>{t('enrollment-results-page.title')}</h1>
             <div className='enrollmentResultsPageContainer my-5'>
             <div className="alert alert-info my-5" role="alert">
                 <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>
-                <p>View the following status report for enrollment confirmations and errors.</p>
+                <p>{t('enrollment-results-page.info')}</p>
             </div>
             <div className="resultsTable">
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th style={{width: "20%"}} scope="col">Course</th>
-                            <th scope="col">Message</th>
-                            <th scope="col" style={{width: "20%"}}>Status</th>
+                            <th style={{width: "20%"}} scope="col">{t('enrollment-results-page.course')}</th>
+                            <th scope="col">{t('enrollment-results-page.message')}</th>
+                            <th scope="col" style={{width: "20%"}}>{t('enrollment-results-page.status')}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,7 +52,7 @@ const EnrollmentResultsPage = () => {
                                 return(
                                     <tr key={index}>
                                         <td>{course.code} {course.number}</td>
-                                        <td>You have successfully enrolled in this course. The course is now added to your Schedule</td>
+                                        <td>{t('enrollment-results-page.success-message')}</td>
                                         <td>{getCourseEnrollmentStatus(true)}</td>
                                     </tr>
                                 )
@@ -59,13 +64,13 @@ const EnrollmentResultsPage = () => {
             <div className='resultsRedirectionButtons my-5'>
                 <Link to="/shopping-cart"
                       state={{semester: courses[0].term+'-'+courses[0].year}}>
-                    <button className='back-btn'>Shopping Cart</button>
+                    <button className='back-btn'>{t('common.shopping-cart')}</button>
                 </Link>
                 <Link to="/search-course"
                       state={{
                         semester: location.state.semester,
                       }}>
-                    <button className='confirm-btn'>Search Courses</button>
+                    <button className='confirm-btn'>{t('enrollment-results-page.search-courses')}</button>
                 </Link>
             </div>
         </div>

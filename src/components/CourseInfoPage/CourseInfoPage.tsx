@@ -3,8 +3,12 @@ import { Link, useLocation } from 'react-router-dom';
 import './CourseInfoPage.scss'
 import { GetCourseClassStatus } from '../utils/Utils'
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 const CourseInfoPage = (props: any) => {
+
+    // i18n
+    const { t, i18n } = useTranslation();
 
     // set local variables
     const location = useLocation();
@@ -115,7 +119,7 @@ const CourseInfoPage = (props: any) => {
 
     return (    
         <>
-        <h1 className='page-title'>Course Info Page</h1>
+        <h1 className='page-title'>{t('course-info-page.title')}</h1>
         <div className='courseInfoPageContainer my-5'>
             <div className='cancel-div mx-5 mt-4'>
                     <Link  to="/courses-result"
@@ -131,38 +135,38 @@ const CourseInfoPage = (props: any) => {
             <div className="courseGeneralInfo mt-5">
                 <div className="courseDetails">
                     <div>
-                        <h3 style={{fontWeight: "600"}}>Course Details</h3>
+                        <h3 style={{fontWeight: "600"}}>{t('course-info-page.course-details')}</h3>
                         <div className='px-2'>
                             <div>
-                                <h5 style={{display: "inline"}}>Section:</h5> &nbsp; <span>{selectedCourse.section}</span>
+                                <h5 style={{display: "inline"}}>{t('table.section')}:</h5> &nbsp; <span>{selectedCourse.section}</span>
                             </div>
                             <div>
-                                <h5 style={{display: "inline"}}>Units:</h5> &nbsp; <span>{parseInt(selectedCourse.units).toFixed(2)}</span>
+                                <h5 style={{display: "inline"}}>{t('table.units')}:</h5> &nbsp; <span>{parseInt(selectedCourse.units).toFixed(2)}</span>
                             </div>
                             <div>
-                                <h5 style={{display: "inline"}}>Grading:</h5> &nbsp; <span>D (50%) Passing Grade</span>
+                                <h5 style={{display: "inline"}}>{t('course-info-page.grading')}:</h5> &nbsp; <span>D (50%) {t('course-info-page.passing-grade')}</span>
                             </div>
                             <div>
-                                <h5>Meeting Dates:</h5>
+                                <h5>{t('table.meeting-dates')}:</h5>
                                 <ul>
-                                    <li>Start Date: {selectedCourse.startDate.split('-').join('/')}</li>
-                                    <li>End Date: {selectedCourse.endDate.split('-').join('/')}</li>
+                                    <li>{t('course-info-page.start-date')}: {selectedCourse.startDate.split('-').join('/')}</li>
+                                    <li>{t('course-info-page.end-date')}: {selectedCourse.endDate.split('-').join('/')}</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="enrollmentInfo">
-                    <h3 style={{fontWeight: "600"}}>Enrollement info</h3>
+                    <h3 style={{fontWeight: "600"}}>{t('course-info-page.enrollment-info')}</h3>
                     <div className='px-2'>
                         <div>
-                            <h5 style={{display: "inline"}}>Prerequisite:</h5> &nbsp; <span>ITI1120</span>
+                            <h5 style={{display: "inline"}}>{t('course-info-page.prerequisite')}:</h5> &nbsp; <span>ITI1120</span>
                         </div>
                         <div>
-                            <h5 style={{display: "inline"}}>Language:</h5> &nbsp; <span>English</span>
+                            <h5 style={{display: "inline"}}>{t('course-info-page.language')}:</h5> &nbsp; <span>English</span>
                         </div>
                         <div>
-                            <h5 style={{display: "inline"}}>Level:</h5> &nbsp; <span>First year course</span>
+                            <h5 style={{display: "inline"}}>{t('course-info-page.level')}:</h5> &nbsp; <span>First year course</span>
                         </div>
                     </div>
                 </div>
@@ -177,14 +181,14 @@ const CourseInfoPage = (props: any) => {
                                     <table className="table table-striped mb-5">
                                         <thead>
                                             <tr>
-                                            <th scope="col">Component</th>
-                                            <th scope="col">Section</th>
-                                            <th scope="col">Day</th>
-                                            <th scope="col">Time</th>
-                                            <th scope="col">Room</th>
-                                            <th scope="col">Instructor</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Select</th>
+                                            <th scope="col">{t('table.component')}</th>
+                                            <th scope="col">{t('table.section')}</th>
+                                            <th scope="col">{t('table.day')}</th>
+                                            <th scope="col">{t('table.time')}</th>
+                                            <th scope="col">{t('table.room')}</th>
+                                            <th scope="col">{t('table.instructor')}</th>
+                                            <th scope="col">{t('table.status')}</th>
+                                            <th scope="col">{t('common.select')}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -199,7 +203,7 @@ const CourseInfoPage = (props: any) => {
                                                                 <td>{courseClass.startTime}-{courseClass.endTime}</td>
                                                                 <td>{courseClass.location.address} <br/> ({courseClass.location.department}) {courseClass.location.room}</td>
                                                                 <td>{courseClass.instructor}</td>
-                                                                <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, selectedCourse.isClosed)}</td>
+                                                                <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, selectedCourse.isClosed, t)}</td>
                                                                 <td>{selectButton(courseClass, index)}</td>
                                                             </tr>
                                                         )
@@ -216,14 +220,14 @@ const CourseInfoPage = (props: any) => {
             <div className='cancelOrSelectContainer mb-5'>
                 <Link to="/shopping-cart"
                       state={{semester: selectedCourse.term+'-'+selectedCourse.year}}>
-                    <button className='back-btn'>Cancel</button>
+                    <button className='back-btn'>{t('common.cancel')}</button>
                 </Link>
                 <Link to="/shopping-cart"
                       state={{
                         semester: selectedCourse.term+'-'+selectedCourse.year,
                       }}>
                     <button className='add-btn'
-                            onClick={() => {handlePost()}}>Add</button>
+                            onClick={() => {handlePost()}}>{t('common.add')}</button>
                 </Link>                
             </div>
         </div></>

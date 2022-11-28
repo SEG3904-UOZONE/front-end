@@ -3,12 +3,27 @@ import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { GetCourseClassStatus, GetMeetingDates, GetCourseUnits } from '../utils/Utils'
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
+
 
 const AddCourseMainPage = (props: any) => {
+
+    // i18n
+    const { t, i18n } = useTranslation();
 
     const location = useLocation();
     const [semesterCode, setSemesterCode] = useState<string>(location.state.semester);
     let isEmptyCart: boolean = true
+
+    // Extract academic term name
+    const academicTerm = (semesterCode: string) => {
+        const semesterAndYear = semesterCode.split('-')
+        if (semesterAndYear[0] == 'fall') {
+            return `${t('common.fall').toUpperCase()} ${semesterAndYear[1]}`
+        } else {
+            return `${t('common.winter').toUpperCase()} ${semesterAndYear[1]}`
+        }
+    }
 
      // Grouping the API data insude of an array of objects.
      let [cart, setCart] = useState<any[]>([]);
@@ -49,40 +64,40 @@ const AddCourseMainPage = (props: any) => {
 
     return(
         <>
-            <h1 className='mt-5 page-title'>Shopping Cart Page</h1>
+            <h1 className='mt-5 page-title'>{t('shopping-cart-page.shopping-cart')}</h1>
             <div className='add-course-main-container my-5'>
                 <div className="add-course-search">
                     <div className="free-serach py-4">
-                        <h4 className='component-title'>{semesterCode.split('-').join(' ').toUpperCase()} Term</h4>
+                        <h4 className='component-title'>{academicTerm(semesterCode)} {t('common.term-long')}</h4>
                         <Link to="/">
-                            <button className='change-term-btn'>Change Term</button>
+                            <button className='change-term-btn'>{t('shopping-cart-page.change-term')}</button>
                         </Link>
                     </div>
                     <div className="free-serach my-3 py-4">
-                        <h4 className='component-title'>Class Search</h4>
-                        <p>Search classes based on different criterias</p>
+                        <h4 className='component-title'>{t('shopping-cart-page.class-search.title')}</h4>
+                        <p>{t('shopping-cart-page.class-search.description')}</p>
                         <Link   to="/search-course"
                                 state={{ 
                                     semester: semesterCode,
                                 }}>
-                            <button className='search-course-btn'>Search</button>
+                            <button className='search-course-btn'>{t('common.search')}</button>
                         </Link>
                     </div>
                     <div className="requirements-search my-3 py-4">
-                        <h4 className='component-title'>My Requirements Search</h4>
-                        <p>Search classes based on your program requirements</p>
-                        <button className='search-course-btn'>Search</button>
+                        <h4 className='component-title'>{t('shopping-cart-page.requirements-search.title')}</h4>
+                        <p>{t('shopping-cart-page.requirements-search.description')}</p>
+                        <button className='search-course-btn'>{t('common.search')}</button>
                     </div>
                 </div>
                 <div className="shopping-cart-container px-5">
-                    <h2 className='mt-3'>Shopping Cart for the <b>{semesterCode.split('-').join(' ').toUpperCase()}</b> term</h2>
+                    <h2 className='mt-3'>{t('shopping-cart-page.description')} <b>{academicTerm(semesterCode)}</b> {t('common.term-long')}</h2>
                     <div hidden={filteredCart.length == 0}>
                         <Link to="/confirm-courses"
                               state={{ 
                                 semester: semesterCode,
                                 courses: cart
                             }}>
-                            <button className="btn mt-5" id='step-two-btn'>Add Courses to Schedule <i className="bi bi-arrow-right-circle"></i></button>
+                            <button className="btn mt-5" id='step-two-btn'>{t('shopping-cart-page.add-courses')} <i className="bi bi-arrow-right-circle"></i></button>
                         </Link>
                     </div>
                     {
@@ -94,12 +109,12 @@ const AddCourseMainPage = (props: any) => {
                                         <table className="table table-striped">
                                             <thead>
                                                 <tr>
-                                                <th scope="col">Component</th>
-                                                <th scope="col">Day & Time</th>
-                                                <th scope="col">Room</th>
-                                                <th scope="col">Instructor</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Units</th>
+                                                <th scope="col">{t('table.component')}</th>
+                                                <th scope="col">{t('table.date-time')}</th>
+                                                <th scope="col">{t('table.room')}</th>
+                                                <th scope="col">{t('table.instructor')}</th>
+                                                <th scope="col">{t('table.status')}</th>
+                                                <th scope="col">{t('table.units')}</th>
                                                 <th scope="col"></th>
                                                 </tr>
                                             </thead>
@@ -112,7 +127,7 @@ const AddCourseMainPage = (props: any) => {
                                                                 <td><b>{courseClass.day.en.substring(0,2)} :</b> {courseClass.startTime}-{courseClass.endTime}</td>
                                                                 <td>{courseClass.location.address} <br/> ({courseClass.location.department}) {courseClass.location.room}</td>
                                                                 <td>{courseClass.instructor}</td>
-                                                                <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</td>
+                                                                <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed, t)}</td>
                                                                 <td>{GetCourseUnits(course, index)}</td>
                                                                 <td>{removeCourseFromList(index, course.cart_item_id, course.code+course.number)}</td>
                                                             </tr>
@@ -126,7 +141,7 @@ const AddCourseMainPage = (props: any) => {
                         )}
                     <div className="alert alert-danger mt-5" role="alert" hidden={filteredCart.length != 0}>
                         <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>
-                        <h4>Shopping Cart is empty, try adding some courses to proceed enrolling</h4>
+                        <h4>{t('shopping-cart-page.empty-cart')}</h4>
                     </div>
                 </div>
             </div>

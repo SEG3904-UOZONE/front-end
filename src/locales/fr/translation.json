@@ -1,0 +1,108 @@
+{
+    "common": {
+        "fall": "Automne",
+        "winter": "Hiver",
+        "term-long": "Trimestre",
+        "search": "Rechercher",
+        "open": "Ouvert",
+        "wait-list": "Liste attente",
+        "closed": "Fermé",
+        "confirm": "Confirmer",
+        "back": "Retour",
+        "add": "Ajouter",
+        "cancel": "Annuler",
+        "select": "Sélectionnez",
+        "shopping-cart": "Panier",
+        "modify-search": "Modifier recherche"
+    },
+    "header": {
+        "navbar": {
+            "my-schedule-link": "Mon Horaire de cours",
+            "add-link": "Ajout",
+            "drop-link": "Abandon",
+            "swap-link": "Changement",
+            "term-information-link": "Données Trimestre"
+        }
+    },
+    "table": {
+        "component": "Composante",
+        "section": "Section",
+        "date-time": "Jours et Heures",
+        "room": "Local",
+        "instructor": "Enseignant",
+        "status": "Statut",
+        "units": "Crédits",
+        "day": "Jour",
+        "time": "Horaire",
+        "meeting-dates": "Dates réunion"
+    },
+    "home-page": {
+        "select-term-title": "Sélectionnez un trimestre",
+        "description": "Sélectionnez un trimestre académique pour continuer",
+        "fall": "Automne",
+        "winter": "Hiver"
+    },
+    "shopping-cart-page": {
+        "shopping-cart": "Panier",
+        "description": "Panier pour le",
+        "term": "Trimestre",
+        "add-courses": "Ajouter les cours à l'horaire",
+        "change-term": "Changer Trim.",
+        "empty-cart": "Le panier est vide, essayez d'ajouter des cours pour procéder à l'inscription",
+        "class-search": {
+            "title": "Recherche de cours",
+            "description": "Recherche de classes selon différents critères"
+        },
+        "requirements-search": {
+            "title": "Recherche de mes exigences",
+            "description": "Recherchez des cours en fonction des exigences de votre programme"
+        }
+    },
+    "confirm-courses-page": {
+        "title": "Confirmer les Courses",
+        "description": "Sélectionnez Confirmer pour traiter votre demande pour les cours répertoriés ci-dessous et l'ajouter à votre emploi du temps. Pour quitter sans ajouter ces classes, sélectionnez Annuler. Sélectionnez l'icône Corbeille pour supprimer un cours de la liste (il sera toujours enregistré dans votre panier pour plus tard)"
+    },
+    "courses-result-page": {
+        "title": "Résultat des Cours",
+        "info": "Sélectionnez l'un des cours en fonction des critères que vous avez saisis, vous pouvez également modifier la requête de recherche ou retourner au panier",
+        "description": "cours disponibles pour le",
+        "empty-courses": "La recherche n'a donné aucun résultat, vous pouvez modifier la requête de recherche ou retourner au panier"
+    },
+    "course-info-page": {
+        "title": "Informations du Cours",
+        "course-details": "Détails du Cours",
+        "grading": "Note",
+        "passing-grade": "Note de passage",
+        "start-date": "Date de début",
+        "end-date": "Date de fin",
+        "enrollment-info": "Informations d'inscription",
+        "prerequisite": "Prérequis",
+        "language": "Langue",
+        "level": "Niveau"
+    },
+    "search-page": {
+        "title": "Rechercher un Cours",
+        "description": "Insérer les informations sur le cours",
+        "advanced-search": "Recherche Avancée",
+        "hide-advanced-search": "Masquer la Recherche Avancée",
+        "course-subject": "Sujet du cours",
+        "course-number": "Numéro du cours",
+        "course-career": "Cours Carrière",
+        "number-range": "Intervalle",
+        "course-attribute": "Attribut du cours",
+        "course-component": "Composante",
+        "campus": "Campus",
+        "location": "Localisation"
+    },
+    "enrollment-results-page": {
+        "title": "Résultats d'Inscription",
+        "info": "Consultez le rapport d'état suivant pour les confirmations d'inscription et les erreurs.",
+        "course": "Cours",
+        "message": "Message",
+        "status": "Statut",
+        "enrolled": "Inscrit",
+        "error": "Erreur",
+        "search-courses": "Rechercher Cours",
+        "success-message": "Vous vous êtes inscrit avec succès à ce cours. Le cours est maintenant ajouté à votre emploi du temps"
+    }
+}
