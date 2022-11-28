@@ -3,8 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import './ConfirmCoursesPage.scss'
 import { GetCourseClassStatus, GetMeetingDates, GetCourseUnits } from '../utils/Utils'
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
+
 
 const ConformCoursesPage = () => {
+
+    // i18n
+    const { t, i18n } = useTranslation();
 
     const location = useLocation();
     const [shoppingCartCourses, setShoppingCartCourses] = useState([...location.state.courses])
@@ -33,20 +38,18 @@ const ConformCoursesPage = () => {
 
     return(
         <>
-        <h1 className='page-title'>Confirm Courses</h1>
+        <h1 className='page-title'>{t('confirm-courses-page.title')}</h1>
         <div className='confirmationPageContainer my-5'>
             <div className="alert alert-info mt-5" role="alert">
                 <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>
-                <p>Select <b>Confirm</b> to process your request for the courses listed below and add it to your schedule.
-                 To exit without addening these classes, select <b>Cancel</b>. Select the <b>Trash</b> icon to remove a course
-                 from the list (it will still be saved in your Shopping Cart for later)</p>
+                <p>{t('confirm-courses-page.description')}</p>
             </div>
             <div className='cancelOrConfirmContainer'>
                 <Link to="/shopping-cart"
                       state={{semester: location.state.semester}}>
                     <button className='back-btn' 
                             style={{fontSize: "1.7rem"}}>
-                            <i className="bi bi-arrow-left-circle"></i> Back
+                            <i className="bi bi-arrow-left-circle"></i> {t('common.back')}
                     </button>
                 </Link>
                 <Link to="/enrollment-results"
@@ -56,7 +59,7 @@ const ConformCoursesPage = () => {
                     <button className='confirm-btn'
                             style={{fontSize: "1.7rem"}}
                             onClick={() => handleCourseDelete(shoppingCartCourses)}
-                            >Confirm <i className="bi bi-arrow-right-circle"></i>
+                            >{t('common.confirm')} <i className="bi bi-arrow-right-circle"></i>
                     </button>
                 </Link>
             </div>
@@ -69,14 +72,14 @@ const ConformCoursesPage = () => {
                             <table className="table table-striped">
                                 <thead>
                                     <tr>
-                                    <th scope="col">Component</th>
-                                    <th scope="col">Day</th>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">Room</th>
-                                    <th scope="col">Instructor</th>
-                                    <th scope="col">Meeting Dates</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Units</th>
+                                    <th scope="col">{t('table.component')}</th>
+                                    <th scope="col">{t('table.day')}</th>
+                                    <th scope="col">{t('table.time')}</th>
+                                    <th scope="col">{t('table.room')}</th>
+                                    <th scope="col">{t('table.instructor')}</th>
+                                    <th scope="col">{t('table.meeting-dates')}</th>
+                                    <th scope="col">{t('table.status')}</th>
+                                    <th scope="col">{t('table.units')}</th>
                                     <th scope="col"></th>
                                     </tr>
                                 </thead>
@@ -91,7 +94,7 @@ const ConformCoursesPage = () => {
                                                     <td>{courseClass.location.address} <br/> ({courseClass.location.department}) {courseClass.location.room}</td>
                                                     <td>{courseClass.instructor}</td>
                                                     <td>{GetMeetingDates(course, index)}</td>
-                                                    <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed)}</td>
+                                                    <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed, t)}</td>
                                                     <td>{GetCourseUnits(course, index)}</td>
                                                     <td>{removeCourseFromList(index, key)}</td>
                                                 </tr>

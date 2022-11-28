@@ -6,7 +6,9 @@
         "search": "Search",
         "open": "Open",
         "wait-list": "Wait List",
-        "closed": "Closed"
+        "closed": "Closed",
+        "confirm": "Confirm",
+        "back": "Back"
     },
     "header": {
         "navbar": {
@@ -24,7 +26,10 @@
         "room": "Room",
         "instructor": "Instructor",
         "status": "Status",
-        "units": "Units"
+        "units": "Units",
+        "day": "Day",
+        "time": "Time",
+        "meeting-dates": "Meeting Dates"
     },
     "home-page": {
         "select-term-title": "Select Term",
@@ -46,5 +51,9 @@
             "title": "My Requirements Search",
             "description": "Search classes based on your program requirements"
         }
+    },
+    "confirm-courses-page": {
+        "title": "Confirm Courses",
+        "description": "Select Confirm to process your request for the courses listed below and add it to your schedule. To exit without adding these classes, select Cancel. Select the Trash icon to remove a course from the list (it will still be saved in your Shopping Cart for later)"
     }
 }
