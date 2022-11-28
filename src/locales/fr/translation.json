@@ -9,7 +9,9 @@
         "closed": "Fermé",
         "confirm": "Confirmer",
         "back": "Retour",
-        "select": "Sélection",
+        "add": "Ajouter",
+        "cancel": "Annuler",
+        "select": "Sélectionnez",
         "shopping-cart": "Panier",
         "modify-search": "Modifier recherche"
     },
@@ -65,5 +67,17 @@
         "info": "Sélectionnez l'un des cours en fonction des critères que vous avez saisis, vous pouvez également modifier la requête de recherche ou retourner au panier",
         "description": "cours disponibles pour le",
         "empty-courses": "La recherche n'a donné aucun résultat, vous pouvez modifier la requête de recherche ou retourner au panier"
+    },
+    "course-info-page": {
+        "title": "Informations du Cours",
+        "course-details": "Détails du Cours",
+        "grading": "Note",
+        "passing-grade": "Note de passage",
+        "start-date": "Date de début",
+        "end-date": "Date de fin",
+        "enrollment-info": "Informations d'inscription",
+        "prerequisite": "Prérequis",
+        "language": "Langue",
+        "level": "Niveau"
     }
 }

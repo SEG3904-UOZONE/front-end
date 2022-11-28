@@ -10,6 +10,8 @@
         "confirm": "Confirm",
         "back": "Back",
         "select": "Select",
+        "add": "Add",
+        "cancel": "Cancel",
         "shopping-cart": "Shopping Cart",
         "modify-search": "Modify Search"
     },
@@ -65,5 +67,17 @@
         "info": "Select one of the courses based on the criteria you entered, you can also modify the search query, or return to the shopping cart",
         "description": "available courses for the",
         "empty-courses": "The search returned no results, you can modify the search query, or return to the shopping cart"
+    },
+    "course-info-page": {
+        "title": "Course Info",
+        "course-details": "Course Details",
+        "grading": "Grading",
+        "passing-grade": "Passing Grade",
+        "start-date": "Start Date",
+        "end-date": "End Date",
+        "enrollment-info": "Enrollment Info",
+        "prerequisite": "Prerequisites",
+        "language": "Language",
+        "level": "Level"
     }
 }
