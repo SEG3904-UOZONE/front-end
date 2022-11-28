@@ -107,49 +107,51 @@ const CoursesResultPage = (props: any) => {
                             <button className='modify-search-btn'>{t('common.modify-search')}</button>
                         </Link>
                     </div>
-                    {
-                        filteredSearchResults
-                            .map((course: any, key: number) => {
-                                return (    
-                                    <div className='course-table my-5' key={key}>
-                                        <h4 style={{color: '#8f001a'}}>{course.code+course.number} [{course.section}] - {course.name_en}</h4>
-                                        <table className="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">{t('table.component')}</th>
-                                                    <th scope="col">{t('table.day')}</th>
-                                                    <th scope="col">{t('table.time')}</th>
-                                                    <th scope="col">{t('table.room')}</th>
-                                                    <th scope="col">{t('table.instructor')}</th>
-                                                    <th scope="col">{t('table.meeting-dates')}</th>
-                                                    <th scope="col">{t('table.status')}</th>
-                                                    <th scope="col">{t('table.units')}</th>
-                                                    <th scope="col"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            {
-                                                    course.classes.map((courseClass: any, index: number) => {
-                                                        return (
-                                                            <tr key={key+'-'+index}>
-                                                                <td>{courseClass.type} - {courseClass.sectionCode}</td>
-                                                                <td>{courseClass.day.en}</td>
-                                                                <td>{courseClass.startTime}-{courseClass.endTime}</td>
-                                                                <td>{courseClass.location.address} <br/> ({courseClass.location.department}) {courseClass.location.room}</td>
-                                                                <td>{courseClass.instructor}</td>
-                                                                <td>{meetingDates(course, index)}</td>
-                                                                <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed, t)}</td>
-                                                                <td>{GetCourseUnits(course, index)}</td>
-                                                                <td>{selectButton(course, index)}</td>
-                                                            </tr>
-                                                        )
-                                                    })
-                                                }
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                )}
-                            )}
+                    <div className="courses-result-tables">
+                        {
+                            filteredSearchResults
+                                .map((course: any, key: number) => {
+                                    return (    
+                                        <div className='course-table my-5' key={key}>
+                                            <h4 style={{color: '#8f001a'}}>{course.code+course.number} [{course.section}] - {course.name_en}</h4>
+                                            <table className="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">{t('table.component')}</th>
+                                                        <th scope="col">{t('table.day')}</th>
+                                                        <th scope="col">{t('table.time')}</th>
+                                                        <th scope="col">{t('table.room')}</th>
+                                                        <th scope="col">{t('table.instructor')}</th>
+                                                        <th scope="col">{t('table.meeting-dates')}</th>
+                                                        <th scope="col">{t('table.status')}</th>
+                                                        <th scope="col">{t('table.units')}</th>
+                                                        <th scope="col"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                {
+                                                        course.classes.map((courseClass: any, index: number) => {
+                                                            return (
+                                                                <tr key={key+'-'+index}>
+                                                                    <td>{courseClass.type} - {courseClass.sectionCode}</td>
+                                                                    <td>{courseClass.day.en}</td>
+                                                                    <td>{courseClass.startTime}-{courseClass.endTime}</td>
+                                                                    <td>{courseClass.location.address} <br/> ({courseClass.location.department}) {courseClass.location.room}</td>
+                                                                    <td>{courseClass.instructor}</td>
+                                                                    <td>{meetingDates(course, index)}</td>
+                                                                    <td>{GetCourseClassStatus(courseClass.seats.capacity, courseClass.seats.taken, course.isClosed, t)}</td>
+                                                                    <td>{GetCourseUnits(course, index)}</td>
+                                                                    <td>{selectButton(course, index)}</td>
+                                                                </tr>
+                                                            )
+                                                        })
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    )}
+                        )}
+                    </div>
                     </div>
                 </div>
             </>
