@@ -43,6 +43,7 @@
         "term": "Trimestre",
         "add-courses": "Ajouter les cours à l'horaire",
         "change-term": "Changer Trim.",
+        "empty-cart": "Le panier est vide, essayez d'ajouter des cours pour procéder à l'inscription",
         "class-search": {
             "title": "Recherche de cours",
             "description": "Recherche de classes selon différents critères"

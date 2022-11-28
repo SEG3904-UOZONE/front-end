@@ -43,6 +43,7 @@
         "term": "Term",
         "add-courses": "Add Courses to Schedule",
         "change-term": "Change Term",
+        "empty-cart": "Shopping Cart is empty, try adding some courses to proceed with enrolling",
         "class-search": {
             "title": "Class Search",
             "description": "Search classes based on different criteria"

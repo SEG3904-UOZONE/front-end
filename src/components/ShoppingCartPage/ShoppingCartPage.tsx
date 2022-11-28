@@ -141,7 +141,7 @@ const AddCourseMainPage = (props: any) => {
                         )}
                     <div className="alert alert-danger mt-5" role="alert" hidden={filteredCart.length != 0}>
                         <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>
-                        <h4>Shopping Cart is empty, try adding some courses to proceed enrolling</h4>
+                        <h4>{t('shopping-cart-page.empty-cart')}</h4>
                     </div>
                 </div>
             </div>
