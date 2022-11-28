@@ -50,12 +50,12 @@
         "change-term": "Change Term",
         "empty-cart": "Shopping Cart is empty, try adding some courses to proceed with enrolling",
         "class-search": {
-            "title": "Class Search",
-            "description": "Search classes based on different criteria"
+            "title": "Course Search",
+            "description": "Search courses based on different criteria"
         },
         "requirements-search": {
             "title": "My Requirements Search",
-            "description": "Search classes based on your program requirements"
+            "description": "Search courses based on your program requirements"
         }
     },
     "confirm-courses-page": {
@@ -79,5 +79,19 @@
         "prerequisite": "Prerequisites",
         "language": "Language",
         "level": "Level"
+    },
+    "search-page": {
+        "title": "Search Course",
+        "description": "Insert course information",
+        "advanced-search": "Advanced Search",
+        "hide-advanced-search": "Hide Advanced Search",
+        "course-subject": "Course Subject",
+        "course-number": "Course Number",
+        "course-career": "Course Career",
+        "number-range": "Number Range",
+        "course-attribute": "Course Attribute",
+        "course-component": "Course Component",
+        "campus": "Campus",
+        "location": "Location"
     }
 }

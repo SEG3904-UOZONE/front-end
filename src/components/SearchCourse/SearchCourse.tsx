@@ -1,14 +1,19 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './SearchCourse.scss'
+import { useTranslation } from 'react-i18next';
+
 
 const SearchCourse = () => {
+
+    // i18n
+    const { t, i18n } = useTranslation();
 
     const location = useLocation();
     const [semesterCode, setSemesterCode] = useState<string>(location.state.semester);
 
     let [hideAdvancedSearch, setHideAdvancedSearch] = useState<boolean>(true)
-    let [advancedSearchText, setAdvancedSearchText] = useState<string>('Advanced Search')
+    let [advancedSearchText, setAdvancedSearchText] = useState<string>(`${t('search-page.advanced-search')}`)
 
     let [courseSubject, setCourseSubject] = useState("")
     let [courseNumber, setCourseNumber] = useState(0)
@@ -16,16 +21,16 @@ const SearchCourse = () => {
     let toggleAdvancedSearch = (): void => {
         setHideAdvancedSearch(!hideAdvancedSearch)
         if (hideAdvancedSearch) {
-            setAdvancedSearchText('Hide Advanced Search');
+            setAdvancedSearchText(`${t('search-page.hide-advanced-search')}`);
         } else {
-            setAdvancedSearchText('Advanced Search');
+            setAdvancedSearchText(`${t('search-page.advanced-search')}`);
         }
     }
 
     return(
         <div className='search-course-main'>
             <div className='page-title'>
-                <span>Search Course</span>
+                <span>{t('search-page.title')}</span>
             </div>
             <div id="form-container">
                 <div className='cancel-div'>
@@ -35,17 +40,17 @@ const SearchCourse = () => {
                     </Link>
                 </div>
                 <form className='form-section'>
-                    <h2 className='my-4'>Insert course information</h2>
+                    <h2 className='my-4'>{t('search-page.description')}</h2>
                     <div className="form-group inline-filter">
-                        <label htmlFor="subjectInput">Course Subject</label>
+                        <label htmlFor="subjectInput">{t('search-page.course-subject')}</label>
                         <input type="text" className="form-control" id="subjectInpu" placeholder="AAA" maxLength={3} onChange={e => setCourseSubject((e.target.value).toUpperCase())}/>
                     </div>
                     <div className="form-group inline-filter ">
-                        <label htmlFor="courseNumberInput">Course Number</label>
+                        <label htmlFor="courseNumberInput">{t('search-page.course-number')}</label>
                         <input type="number" className="form-control" id="courseNumberInput" placeholder="1234" max={9999} onChange={e => setCourseNumber(parseInt(e.target.value))}/>
                     </div>
                     <div className="form-group inline-filter" hidden={hideAdvancedSearch}>
-                        <label htmlFor="courseCareerInput">Course Career</label>
+                        <label htmlFor="courseCareerInput">{t('search-page.course-career')}</label>
                         <select className="form-control" defaultValue={'DEFAULT'} >
                             <option value="DEFAULT" disabled hidden></option>
                             <option value="undergraduate">Undergraduate</option>
@@ -56,7 +61,7 @@ const SearchCourse = () => {
                         </select>
                     </div>
                     <div className="form-group inline-filter" hidden={hideAdvancedSearch}>
-                        <label htmlFor="courseNumberRangeInput">Number Range</label>
+                        <label htmlFor="courseNumberRangeInput">{t('search-page.number-range')}</label>
                         <select className="form-control" defaultValue={'DEFAULT'} >
                             <option value="DEFAULT" disabled hidden></option>
                             <option value="exactly">Is Exactly</option>
@@ -66,7 +71,7 @@ const SearchCourse = () => {
                         </select>
                     </div>
                     <div className="form-group inline-filter" hidden={hideAdvancedSearch}>
-                        <label htmlFor="courseAttributeInput">Course Attribute</label>
+                        <label htmlFor="courseAttributeInput">{t('search-page.course-attribute')}</label>
                         <select className="form-control" defaultValue={'DEFAULT'} >
                             <option value="DEFAULT" disabled hidden></option>
                             <option value="Auditor">Auditor Permitted</option>
@@ -79,7 +84,7 @@ const SearchCourse = () => {
                         </select>
                     </div>
                     <div className="form-group inline-filter" hidden={hideAdvancedSearch}>
-                        <label htmlFor="courseComponentInput">Course Component</label>
+                        <label htmlFor="courseComponentInput">{t('search-page.course-component')}</label>
                         <select className="form-control" defaultValue={'DEFAULT'} >
                             <option value="DEFAULT" disabled hidden></option>
                             <option value="lab">Laboratory</option>
@@ -88,7 +93,7 @@ const SearchCourse = () => {
                         </select>
                     </div>
                     <div className="form-group inline-filter" hidden={hideAdvancedSearch}>
-                        <label htmlFor="courseCampusInput">Campus</label>
+                        <label htmlFor="courseCampusInput">{t('search-page.campus')}</label>
                         <select className="form-control" defaultValue={'DEFAULT'} >
                             <option value="DEFAULT" disabled hidden></option>
                             <option value="uOttawa">University of Ottawa</option>
@@ -96,7 +101,7 @@ const SearchCourse = () => {
                         </select>
                     </div>
                     <div className="form-group inline-filter" hidden={hideAdvancedSearch}>
-                        <label htmlFor="courseLocationInput">Location</label>
+                        <label htmlFor="courseLocationInput">{t('search-page.location')}</label>
                         <select className="form-control" defaultValue={'DEFAULT'} >
                             <option value="DEFAULT" disabled hidden></option>
                             <option value="ARROSAR">AR Rosario</option>
@@ -116,7 +121,7 @@ const SearchCourse = () => {
                                 courseNumber: courseNumber,
                                 semester: semesterCode
                             }}>
-                        <button type="submit" id="submit-seach-btn">Search</button>
+                        <button type="submit" id="submit-seach-btn">{t('common.search')}</button>
                     </Link>
                 </form>
                 <button className='btn btn-link mt-5' 

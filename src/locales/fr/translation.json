@@ -79,5 +79,19 @@
         "prerequisite": "Prérequis",
         "language": "Langue",
         "level": "Niveau"
+    },
+    "search-page": {
+        "title": "Rechercher un Cours",
+        "description": "Insérer les informations sur le cours",
+        "advanced-search": "Recherche Avancée",
+        "hide-advanced-search": "Masquer la Recherche Avancée",
+        "course-subject": "Sujet du cours",
+        "course-number": "Numéro du cours",
+        "course-career": "Cours Carrière",
+        "number-range": "Intervalle",
+        "course-attribute": "Attribut du cours",
+        "course-component": "Composante",
+        "campus": "Campus",
+        "location": "Localisation"
     }
 }
