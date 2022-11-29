@@ -4,6 +4,7 @@ import './CourseInfoPage.scss'
 import { GetCourseClassStatus } from '../utils/Utils'
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import ProgressBar from '../utils/ProgressBar/ProgressBar';
 
 const CourseInfoPage = (props: any) => {
 
@@ -113,13 +114,16 @@ const CourseInfoPage = (props: any) => {
 
         // Add the new course selected to the cart table
         await axios.post('/cart', newCourseToAdd)
-                    .then(() => console.log("Course added successfully"))
+                    .then(() => {
+                        alert('Course added successfully to your cart!')
+                    })
                     .catch(err => console.log(err));
     }
 
     return (    
         <>
         <h1 className='page-title'>{t('course-info-page.title')}</h1>
+        <ProgressBar step={'step-1'}/>
         <div className='courseInfoPageContainer my-5'>
             <div className='cancel-div mx-5 mt-4'>
                     <Link  to="/courses-result"
