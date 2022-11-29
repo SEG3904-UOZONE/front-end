@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { GetCourseClassStatus, GetMeetingDates, GetCourseUnits } from '../utils/Utils'
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import ProgressBar from '../utils/ProgressBar/ProgressBar';
 
 
 const AddCourseMainPage = (props: any) => {
@@ -65,6 +66,8 @@ const AddCourseMainPage = (props: any) => {
     return(
         <>
             <h1 className='mt-5 page-title'>{t('shopping-cart-page.shopping-cart')}</h1>
+            <div hidden={filteredCart.length != 0}><ProgressBar step={'step-0'}/></div>
+            <div hidden={filteredCart.length == 0}><ProgressBar step={'step-2'}/></div>
             <div className='add-course-main-container my-5'>
                 <div className="add-course-search">
                     <div className="py-4" id='changeTermComponent'>
