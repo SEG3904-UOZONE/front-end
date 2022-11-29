@@ -1,6 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import './ProgressBar.scss'
 
 const ProgressBar = (props: any) => {
+
+    // i18n
+    const { t, i18n } = useTranslation();
 
     const choosenProgressBar = (option: string): any => {
         switch (option) {
@@ -9,19 +13,19 @@ const ProgressBar = (props: any) => {
                     <div className="stepper-wrapper">
                         <div className="stepper-item">
                             <div className="step-counter">1</div>
-                            <div className="step-name">Add to Cart</div>
+                            <div className="step-name">{t('progress-bar.choose-courses')}</div>
                         </div>
                         <div className="stepper-item">
                             <div className="step-counter">2</div>
-                            <div className="step-name">Add to Schedule</div>
+                            <div className="step-name">{t('progress-bar.add-schedule')}</div>
                         </div>
                         <div className="stepper-item">
                             <div className="step-counter">3</div>
-                            <div className="step-name">Confirm Courses</div>
+                            <div className="step-name">{t('progress-bar.confirm-courses')}</div>
                         </div>
                         <div className="stepper-item">
                             <div className="step-counter">4</div>
-                            <div className="step-name">Enrolled</div>
+                            <div className="step-name">{t('progress-bar.enrolled')}</div>
                         </div>
                     </div>
                 )
@@ -30,19 +34,19 @@ const ProgressBar = (props: any) => {
                     <div className="stepper-wrapper">
                         <div className="stepper-item activated">
                             <div className="step-counter">1</div>
-                            <div className="step-name">Add to Cart</div>
+                            <div className="step-name">{t('progress-bar.choose-courses')}</div>
                         </div>
                         <div className="stepper-item">
                             <div className="step-counter">2</div>
-                            <div className="step-name">Add to Schedule</div>
+                            <div className="step-name">{t('progress-bar.add-schedule')}</div>
                         </div>
                         <div className="stepper-item">
                             <div className="step-counter">3</div>
-                            <div className="step-name">Confirm Courses</div>
+                            <div className="step-name">{t('progress-bar.confirm-courses')}</div>
                         </div>
                         <div className="stepper-item">
                             <div className="step-counter">4</div>
-                            <div className="step-name">Enrolled</div>
+                            <div className="step-name">{t('progress-bar.enrolled')}</div>
                         </div>
                     </div>
                 )
@@ -51,19 +55,19 @@ const ProgressBar = (props: any) => {
                     <div className="stepper-wrapper">
                         <div className="stepper-item completed">
                             <div className="step-counter">1</div>
-                            <div className="step-name">Add to Cart</div>
+                            <div className="step-name">{t('progress-bar.choose-courses')}</div>
                         </div>
                         <div className="stepper-item activated">
                             <div className="step-counter">2</div>
-                            <div className="step-name">Add to Schedule</div>
+                            <div className="step-name">{t('progress-bar.add-schedule')}</div>
                         </div>
                         <div className="stepper-item">
                             <div className="step-counter">3</div>
-                            <div className="step-name">Confirm Courses</div>
+                            <div className="step-name">{t('progress-bar.confirm-courses')}</div>
                         </div>
                         <div className="stepper-item">
                             <div className="step-counter">4</div>
-                            <div className="step-name">Enrolled</div>
+                            <div className="step-name">{t('progress-bar.enrolled')}</div>
                         </div>
                     </div>
                 )
@@ -72,19 +76,19 @@ const ProgressBar = (props: any) => {
                     <div className="stepper-wrapper">
                         <div className="stepper-item completed">
                             <div className="step-counter">1</div>
-                            <div className="step-name">Add to Cart</div>
+                            <div className="step-name">{t('progress-bar.choose-courses')}</div>
                         </div>
                         <div className="stepper-item completed">
                             <div className="step-counter">2</div>
-                            <div className="step-name">Add to Schedule</div>
+                            <div className="step-name">{t('progress-bar.add-schedule')}</div>
                         </div>
                         <div className="stepper-item activated">
                             <div className="step-counter">3</div>
-                            <div className="step-name">Confirm Courses</div>
+                            <div className="step-name">{t('progress-bar.confirm-courses')}</div>
                         </div>
                         <div className="stepper-item">
                             <div className="step-counter">4</div>
-                            <div className="step-name">Enrolled</div>
+                            <div className="step-name">{t('progress-bar.enrolled')}</div>
                         </div>
                     </div>
                 )
@@ -93,19 +97,19 @@ const ProgressBar = (props: any) => {
                     <div className="stepper-wrapper">
                         <div className="stepper-item completed">
                             <div className="step-counter">1</div>
-                            <div className="step-name">Add to Cart</div>
+                            <div className="step-name">{t('progress-bar.choose-courses')}</div>
                         </div>
                         <div className="stepper-item completed">
                             <div className="step-counter">2</div>
-                            <div className="step-name">Add to Schedule</div>
+                            <div className="step-name">{t('progress-bar.add-schedule')}</div>
                         </div>
                         <div className="stepper-item completed">
                             <div className="step-counter">3</div>
-                            <div className="step-name">Confirm Courses</div>
+                            <div className="step-name">{t('progress-bar.confirm-courses')}</div>
                         </div>
                         <div className="stepper-item completed">
                             <div className="step-counter">4</div>
-                            <div className="step-name">Enrolled</div>
+                            <div className="step-name">{t('progress-bar.enrolled')}</div>
                         </div>
                     </div>
                 ) 

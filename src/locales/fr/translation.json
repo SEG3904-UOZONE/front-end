@@ -104,5 +104,11 @@
         "error": "Erreur",
         "search-courses": "Rechercher Cours",
         "success-message": "Vous vous êtes inscrit avec succès à ce cours. Le cours est maintenant ajouté à votre emploi du temps"
+    },
+    "progress-bar": {
+        "choose-courses": "Choisir des cours",
+        "add-schedule": "Ajouter à l'horaire",
+        "confirm-courses": "Confirmer les cours",
+        "enrolled": "Inscrit"
     }
 }
