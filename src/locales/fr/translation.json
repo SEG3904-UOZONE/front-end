@@ -110,5 +110,11 @@
         "add-schedule": "Ajouter à l'horaire",
         "confirm-courses": "Confirmer les cours",
         "enrolled": "Inscrit"
+    },
+    "alerts": {
+        "success": "Succès!",
+        "course-added": "cours a été ajouté avec succès à votre panier!",
+        "remove": "Retirer",
+        "remove-info": "Êtes-vous sûr de vouloir supprimer de votre panier le cours"
     }
 }

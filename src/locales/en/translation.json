@@ -110,5 +110,11 @@
         "add-schedule": "Add to Schedule",
         "confirm-courses": "Confirm Courses",
         "enrolled": "Enrolled"
+    },
+    "alerts": {
+        "success": "Success!",
+        "course-added": "course was added successfully to your cart!",
+        "remove": "Remove",
+        "remove-info": "Are you sure you want to remove from your cart the course"
     }
 }

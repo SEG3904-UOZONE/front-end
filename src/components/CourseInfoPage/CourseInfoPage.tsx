@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import './CourseInfoPage.scss'
 import { GetCourseClassStatus } from '../utils/Utils'
 import axios from 'axios';
+import swal from 'sweetalert2';
 import { useTranslation } from 'react-i18next';
 import ProgressBar from '../utils/ProgressBar/ProgressBar';
 
@@ -115,7 +116,12 @@ const CourseInfoPage = (props: any) => {
         // Add the new course selected to the cart table
         await axios.post('/cart', newCourseToAdd)
                     .then(() => {
-                        alert('Course added successfully to your cart!')
+                        swal.fire({
+                            title: `${t('alerts.success')}`,
+                            text: `${selectedCourse.code+selectedCourse.number} ${t('alerts.course-added')}`,
+                            icon: "success",
+                            confirmButtonColor: "rgb(143, 0, 26)",
+                            confirmButtonText: `${t('common.confirm')}`});
                     })
                     .catch(err => console.log(err));
     }
