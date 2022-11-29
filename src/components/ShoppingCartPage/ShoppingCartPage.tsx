@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { GetCourseClassStatus, GetMeetingDates, GetCourseUnits } from '../utils/Utils'
 import axios from 'axios';
+import swal from 'sweetalert2';
 import { useTranslation } from 'react-i18next';
 import ProgressBar from '../utils/ProgressBar/ProgressBar';
 
@@ -52,10 +53,21 @@ const AddCourseMainPage = (props: any) => {
             return(
                 <button className='btn btn-danger delete-icon-btn'
                     onClick={async () => {
-                        if (window.confirm("Are you sure to delete the course " + name + " ?") == true) {
-                            await axios.delete('/cart/'+courseId).then(res => console.log(res));
-                            window.location.reload();
-                        }
+                        swal.fire({
+                            title: `${t('alerts.remove')} ${name}`,
+                            text: `${t('alerts.remove-info')} ${name} ?`,
+                            icon: "info",
+                            confirmButtonColor: "rgb(143, 0, 26)",
+                            confirmButtonText: `${t('common.confirm')}`,
+                            showCancelButton: true,
+                            cancelButtonText: `${t('common.cancel')}`,
+                            cancelButtonColor: "rgb(45, 45, 44)",
+                        }).then(async (result) => {
+                            if (result.isConfirmed) {
+                              await axios.delete('/cart/'+courseId).then(res => console.log(res));
+                              window.location.reload();
+                            }
+                          })
                     }}
                     ><i className="bi bi-trash"></i>
                 </button>
