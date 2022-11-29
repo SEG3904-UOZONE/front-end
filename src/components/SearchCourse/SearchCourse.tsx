@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './SearchCourse.scss'
 import { useTranslation } from 'react-i18next';
+import ProgressBar from '../utils/ProgressBar/ProgressBar';
 
 
 const SearchCourse = () => {
@@ -28,10 +29,11 @@ const SearchCourse = () => {
     }
 
     return(
-        <div className='search-course-main'>
+        <div className='search-course-main mb-5'>
             <div className='page-title'>
                 <span>{t('search-page.title')}</span>
             </div>
+            <ProgressBar step={'step-1'}/>
             <div id="form-container">
                 <div className='cancel-div'>
                     <Link  to="/shopping-cart"

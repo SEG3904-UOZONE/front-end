@@ -104,5 +104,11 @@
         "error": "Error",
         "search-courses": "Search Courses",
         "success-message": "You have successfully enrolled in this course. The course is now added to your Schedule"
+    },
+    "progress-bar": {
+        "choose-courses": "Choose Courses",
+        "add-schedule": "Add to Schedule",
+        "confirm-courses": "Confirm Courses",
+        "enrolled": "Enrolled"
     }
 }

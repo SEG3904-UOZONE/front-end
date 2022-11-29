@@ -4,6 +4,7 @@ import './ConfirmCoursesPage.scss'
 import { GetCourseClassStatus, GetMeetingDates, GetCourseUnits } from '../utils/Utils'
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import ProgressBar from '../utils/ProgressBar/ProgressBar';
 
 
 const ConformCoursesPage = () => {
@@ -39,6 +40,7 @@ const ConformCoursesPage = () => {
     return(
         <>
         <h1 className='page-title'>{t('confirm-courses-page.title')}</h1>
+        <ProgressBar step={'step-3'}/>
         <div className='confirmationPageContainer my-5'>
             <div className="alert alert-info mt-5" role="alert">
                 <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>

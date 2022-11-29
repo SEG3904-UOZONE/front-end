@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './EnrollmentResultsPage.scss'
 import { useTranslation } from 'react-i18next';
+import ProgressBar from '../utils/ProgressBar/ProgressBar';
 
 
 const EnrollmentResultsPage = () => {
@@ -32,6 +33,7 @@ const EnrollmentResultsPage = () => {
     return(
         <div style={{fontSize: "20px"}}>
             <h1 className='page-title'>{t('enrollment-results-page.title')}</h1>
+            <ProgressBar step={'step-4'}/>
             <div className='enrollmentResultsPageContainer my-5'>
             <div className="alert alert-info my-5" role="alert">
                 <i style={{fontSize: "50px", display: "inline"}} className="bi bi-info-circle"></i>
@@ -68,7 +70,7 @@ const EnrollmentResultsPage = () => {
                 </Link>
                 <Link to="/search-course"
                       state={{
-                        semester: location.state.semester,
+                        semester: courses[0].term+'-'+courses[0].year
                       }}>
                     <button className='confirm-btn'>{t('enrollment-results-page.search-courses')}</button>
                 </Link>
