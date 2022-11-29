@@ -5,6 +5,7 @@ import axios from 'axios';
 import { GetCourseUnits } from '../utils/GetCourseUnits';
 import { GetCourseClassStatus } from '../utils/GetCourseClassStatus';
 import { useTranslation } from 'react-i18next';
+import ProgressBar from '../utils/ProgressBar/ProgressBar';
 
 
 const CoursesResultPage = (props: any) => {
@@ -84,6 +85,7 @@ const CoursesResultPage = (props: any) => {
     return(
         <>
             <h1 className='page-title'>{t('courses-result-page.title')}</h1>
+            <ProgressBar step={'step-1'}/>
             <div className='courses-result-main-container my-5'>
                 <div className="courses-list-container px-5">
                     <h2 className='my-3'><b>{courseSubject} {courseNumber}</b> {t('courses-result-page.description')} <b>{academicTerm(semesterCode)}</b> {t('common.term-long')}</h2>
